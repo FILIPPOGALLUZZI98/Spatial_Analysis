@@ -1,26 +1,25 @@
-##  VECTOR
 # Da qui in avanti il pacchetto 'terra' è implicito
 library(terra)
-# A map is a plot of geospatial data that also has labels and other graphical objects such 
-# as a scale bar or legend. The spatial data itself should not be referred to as a map.
-# 'terra' introduces a number of classes with names that start with 'Spat'
-# The main vector data types are points, lines and polygons. The geometry of these data structures 
-# consists of sets of coordinate pairs (x, y)
 
-# To create a 'SpatVector' (punti)
-points<-vect(data)  ## Dove 'data' è un vettore, una lista, una matrice
-# Oppure a partire da un file presente nella cartella di lavoro
+# Tipi di dati vettoriali sono: punti, linee, poligoni: la geometria consiste in insiemi di
+# coppie di coordinate (x,y)
+
+# Per conoscere le informazioni di base
+class(v); 
+
+# Create a 'SpatVector'
+points<-vect(data)
+lines<-vect(data, type="lines", crs=crdref)
+polig<-vect(data, type="polygons", crs=crdref)
+
+# A partire da un file presente nella cartella di lavoro
 v<-vect(nome_file) 
-
-# Per fare delle linee o poligoni
-lines<-vect(nome_file, type="lines", crs=crdref)
-polig<-vect(nome_file, type="polygons", crs=crdref)
-
-# You can write new files using the 'writeVector method'
+# Per scrivere nuovi file usiamo 'writeVector'
 # You need to add argument 'overwrite=TRUE' if you want to overwrite an existing file
 writeVector(v, "nome_nuovo_file.shp")  ## 'v' è un 'SpatVector'
 
 ## CONTINUARE ------> "https://rspatial.org/spatial/7-vectmanip.html"
+
 
 
 
