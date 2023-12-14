@@ -32,7 +32,7 @@ latitude <- c(45.3, 42.6, 38.9, 42.1, 35.7, 38.9,
               36.2, 39, 41.6, 36.9)
 stations <- cbind(longitude, latitude)  ## Unisco i due vettori e formo un dataframe
 # To simulate rainfall data
-set.seed(0)  ## ??
+set.seed(0)  ## Per fare in modo che ad ogni run non vengano cambiati i numeri generati
 # Vettore di lunghezza 10 (latitude points) contenente numeri random (0-1000) arrotondati
 precip <- round((runif(length(latitude))*10)^3)  
 # Plot that shows the location of the weather stations, and the size of the dots is proportional
