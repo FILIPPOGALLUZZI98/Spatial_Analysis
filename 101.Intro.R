@@ -22,7 +22,8 @@ library(terra)
 # coordinates for each cell would have to be stored explicitly. Doing so would also
 # dramatically increase processing time.
 
-
+#######################################################################################################
+#######################################################################################################
 ##  BASIC EXAMPLE
 #  Location (longitude and latitude) of 10 weather stations (A to J) and their annual precipitation.
 name <- LETTERS[1:10]  ## Per fare un vettore di lettere da A a J
