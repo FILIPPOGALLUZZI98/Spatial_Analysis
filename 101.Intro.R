@@ -1,26 +1,3 @@
-# Da qui in avanti il pacchetto 'terra' è implicito
-library(terra)
-# A map is a plot of geospatial data that also has labels and other graphical objects such 
-# as a scale bar or legend. The spatial data itself should not be referred to as a map.
-
-##  VECTOR
-# Descrizione della geometria/forma dell'oggetto
-# The main vector data types are points, lines and polygons. In all cases,
-# the geometry of these data structures consists of sets of coordinate pairs (x, y).
-# A polygon refers to a set of closed polylines
-
-##  RASTER
-# A raster divides the world into a grid of equally sized rectangles (cells or pixels)
-# that all have one or more values for the variables of interest. A raster cell value
-# should normally represent the average value for the area it covers. However, in some
-# cases the values are actually estimates for the center of the cell
-# In contrast to vector data, in raster data the geometry is not explicitly stored as
-# coordinates. It is implicitly set by knowing the spatial extent and the number or rows
-# and columns in which the area is divided. From the extent and number of rows and columns,
-# the size of the raster cells can be computed. While raster cells can be thought of as a
-# set of regular polygons, it would be very inefficient to represent the data that way as 
-# coordinates for each cell would have to be stored explicitly. Doing so would also
-# dramatically increase processing time.
 
 #######################################################################################################
 #######################################################################################################
