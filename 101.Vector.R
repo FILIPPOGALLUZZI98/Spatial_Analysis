@@ -39,8 +39,26 @@ plot(z, add=TRUE, border='blue', lwd=5)  ## Aggiungo il riquadro con i bordi blu
 z2 <- z[2,]
 plot(z2, add=TRUE, border='red', lwd=2, col='red')
 
+# Erase a part of a SpatVector
+erese_v<-erase(v,z2)
+plot(erese_v)
 
+#Intersect SpatVectors
+i<-intersect(v, z2)
 
+# Crop SpatVector
+extent<-ext(6, 6.4, 49.7, 50)
+pe<-crop(v, e)
+plot(v)
+plot(extent, add=TRUE, lwd=3, col="red")
+plot(pe, col='light blue', add=TRUE)
+plot(extent, add=TRUE, lwd=3, border="blue")plot(i)
+
+# It is common to aggregate (“dissolve”) polygons that have the same value for an attribute of interest
+pa<-aggregate(v, by='variabile')
+za<-aggregate(z)
+plot(za, col='light gray', border='light gray', lwd=5)
+plot(pa, add=TRUE, col=rainbow(3), lwd=3, border='white')
 
 
 
