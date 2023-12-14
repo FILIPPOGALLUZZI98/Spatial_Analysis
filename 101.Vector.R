@@ -1,6 +1,3 @@
-# Da qui in avanti il pacchetto 'terra' è implicito
-library(terra)
-
 # Tipi di dati vettoriali sono: punti, linee, poligoni: la geometria consiste in insiemi di
 # coppie di coordinate (x,y)
 
