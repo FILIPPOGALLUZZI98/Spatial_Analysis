@@ -1,3 +1,4 @@
+## VECTOR
 # We cannot measure the longitude and latitude, but we can estimate them. To do so, you need a
 # model of the shape of the earth. Such a model is called a “datum”
 # The most commonly used datum is called 'WGS84': World Geodesic System 1984
@@ -23,6 +24,10 @@ crs(new_v)<-"+proj=longlat +datum=WGS84"  ## Inserisco il CRS che voglio
 # One should not use this approach to change the CRS of a data set from what it is to what you want it to be
 # Assigning a CRS is like labeling something. You need to provide the label that corresponds to the item
 
+
+
+
+## RASTER
 # Vector data can be transformed from lon/lat coordinates to planar and back without loss of precision. This is
 # not the case with raster data
 # We can transform these data to a new data set with another CRS using the project method
