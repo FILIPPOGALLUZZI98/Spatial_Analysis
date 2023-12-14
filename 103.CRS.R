@@ -8,6 +8,13 @@
 # Per ispezionare il sistema di riferimento di uno 'SpatVect'
 crs(v)
 
+# Per fornire un sistema di riferimento
+crdref<-"+proj=longlat +datum=WGS84"  ## Selezioniamo il datum, in quest caso 'WGS84'
+v<- vect(nome_file, crs=crdref)  ## Specifichiamo il sistema di riferimento nel vettore
+crs(v)  ## Get or set the coordinate reference system of a SpatRaster or SpatVector.
+# Per unire 'SpatVector' e dataframe (con stesso numero di righe)
+new_v<- vect(nome_file, atts=dataframe, crs=crdref)
+
 # Sometimes we have data without a CRS. In that case we can assign the CRS if we know what it should be
 # Per cambiare CRS creo un nuovo dataset a partire dal primo
 new_v<-v  ## Copio lo 'SpatVector'
