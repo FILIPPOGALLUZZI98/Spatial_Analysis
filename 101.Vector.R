@@ -28,6 +28,7 @@ polig<-vect(nome_file, type="polygons", crs=crdref)
 # You need to add argument 'overwrite=TRUE' if you want to overwrite an existing file
 writeVector(v, "nome_nuovo_file.shp")  ## 'v' è un 'SpatVector'
 
+## CONTINUARE ------> "https://rspatial.org/spatial/7-vectmanip.html"
 
 
 
