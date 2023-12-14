@@ -1,15 +1,13 @@
+##  VECTOR
 # Da qui in avanti il pacchetto 'terra' è implicito
 library(terra)
 # A map is a plot of geospatial data that also has labels and other graphical objects such 
 # as a scale bar or legend. The spatial data itself should not be referred to as a map.
 # 'terra' introduces a number of classes with names that start with 'Spat'
 
-#################################################################################################
-#################################################################################################
-##  VECTOR
+
 # The main vector data types are points, lines and polygons. The geometry of these data structures 
 # consists of sets of coordinate pairs (x, y)
-
 # To create a 'SpatVector' (punti)
 points<-vect(data)  ## Dove 'data' è un vettore, una lista, una matrice
 # Oppure a partire da un file presente nella cartella di lavoro
