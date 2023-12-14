@@ -24,7 +24,7 @@ d<-as.data.frame(v)
 
 ####################################################################################################
 ####################################################################################################
-## OPERAZIONI SU UN FILE VETTORIALE
+## OPERAZIONI SU UN VETTORE
 ## CONTINUARE ------> "https://rspatial.org/spatial/7-vectmanip.html"
 
 # Per sovrapporre all'immagine vettoriale un riquadro
