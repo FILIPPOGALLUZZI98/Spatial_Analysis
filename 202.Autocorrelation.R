@@ -1,14 +1,17 @@
 # Autocorrelation is a measure of similarity (correlation) between nearby observations
 
-## TEMPORAL AUTOCORRELATION
-# Sia 'd' un vettore di osservazioni temporali (daily)
+# Creiamo due vettori di lunghezza 10 di numeri casuali
 set.seed(0)
-d <- sample(100, 10)
-a <- d[-length(d)]
-b <- d[-1]
-plot(a, b, xlab='t', ylab='t-1')
+a<-sample(100, 10)
+set.seed(1)
+b<-sample(100,10)
+plot(a, b, xlab='b', ylab='a', pch=20, col="blue")
+cor(a,b)  ## La correlazione è bassa, dato che sono vettori casuali
 
-
+# Se ora ordiniamo gli elementi, la correlazione aumenta
+a<-sort(a)
+b<-sort(b)
+plot(a, b, xlab='b', ylab='a', pch=20, col="blue")
 
 
 
