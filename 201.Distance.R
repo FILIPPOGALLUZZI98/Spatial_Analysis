@@ -4,6 +4,8 @@
 # Per esempio, supponiamo di avere una serie di punti nello spazio 'pts'
 dits(pts)  ## Restituisce una matrice triangolare inferiore, dove gli elementi sono le distanze
   ## tra le coppie di punti
+# We can transform a distance matrix into a normal matrix
+D <- as.matrix(dis)
 
 # If the coordinates were in degrees, then the distances would be wrong
 # In that case we can use the 'pointDistance' function from the 'raster' package
