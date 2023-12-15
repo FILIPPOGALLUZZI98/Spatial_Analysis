@@ -29,6 +29,8 @@ writeRaster(r, "nome_nuovo_file.tif)  ## 'r' è un 'SpatRaster'
 ######################################################################################################################
 ######################################################################################################################
 ## OPERAZIONI SUL RASTER 
+# To add features on a SpatRaster 
+plot(v, add=TRUE)
 # The 'crop' function lets you take a geographic subset of a larger raster object. 
 # The 'merge' function lets you merge 2 or more SpatRaster objects into a single new object
 
