@@ -25,8 +25,6 @@ d<-as.data.frame(v)
 ####################################################################################################
 ####################################################################################################
 ## OPERAZIONI SU UN VETTORE
-## CONTINUARE ------> "https://rspatial.org/spatial/7-vectmanip.html"
-
 # Per sovrapporre all'immagine vettoriale un riquadro
 z<-rast(v)  ## Creo un raster a partire da 'v' in modo che siano salvate le coordinate
 dim(z)<-c(2,2)  ## Imposto 4 pixel, che ricorpiranno tutta la grandezza del riquadro
