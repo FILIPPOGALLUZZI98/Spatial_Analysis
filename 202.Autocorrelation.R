@@ -1,4 +1,5 @@
 # Autocorrelation is a measure of similarity (correlation) between nearby observations
+# Pacchetto 'spdep'
 
 # Creiamo due vettori di lunghezza 10 di numeri casuali
 set.seed(0)
@@ -7,6 +8,7 @@ set.seed(1)
 b<-sample(100,10)
 plot(a, b, xlab='b', ylab='a', pch=20, col="blue")
 cor(a,b)  ## La correlazione è bassa, dato che sono vettori casuali
+
 
 # Se vogliamo fare la correlazione spaziale, è più difficile perché dobbiamo considerare
 # più dimensioni
@@ -19,7 +21,13 @@ p<-p[p$NAME_1=="Diekirch", ]  ## Selezioniamo la variabile NAME_1 con i valori "
 p$value<-c(10, 6, 4, 11, 6)  ## Creiamo una nuova variabile
 as.data.frame(p)  ## Mostriamo 'p' come dataframe
 # Supponiamo di essere interessati all'autocorrelazione spaziale della variabile "AREA"
-
+# If there were spatial autocorrelation, regions of a similar size would be spatially clustered
+# 'coordinates' function to get the centroids of the polygons to place the labels
+par(mai=c(0,0,0,0))
+plot(p, col=2:7)
+xy <- centroids(p)
+points(xy, cex=6, pch=20, col='white')
+text(p, 'ID_2', cex=1.5)
 
 
 
