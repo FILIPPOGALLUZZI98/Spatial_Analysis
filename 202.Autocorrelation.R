@@ -29,7 +29,7 @@ xy <- centroids(p)
 points(xy, cex=6, pch=20, col='white')
 text(p, 'ID_2', cex=1.5)
 # Here we’ll use adjacency as criterion
-w <- adjacent(p, symmetrical=TRUE)
+w <- adjacent(p, symmetrical=TRUE)  ## Identify cells that are adjacent to a set of raster cells. Or identify adjacent polygons
 class(w)
 # Plot the links between the polygons.
 plot(p, col='gray', border='blue', lwd=2)
