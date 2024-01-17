@@ -1,3 +1,5 @@
+## DA CONTROLLARE: https://rspatial.org/analysis/3-spauto.html
+
 # Autocorrelation is a measure of similarity (correlation) between nearby observations
 # Pacchetto 'spdep'
 
