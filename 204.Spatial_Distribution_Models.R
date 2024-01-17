@@ -35,9 +35,20 @@ plot(wc[[c(1, 12)]], nr=2)  ## [c(1,12)]--> seleziono soltanto i predittori 1 e 
 # Adesso vogliamo estrarre i dati climatici per la zona che ci interessa
 bfc <- extract(wc, bf[,1:2])  ## ????
 bfc <- bfc[,-1]  ## To remove the first column with the ID that we don't need
+# Plot di T vs Rainfall dei siti in cui Bigfoot è stato osservato
 plot(bfc[ ,"wc2.1_10m_bio_1"], bfc[, "wc2.1_10m_bio_12"], col="red",
         xlab="Annual mean temperature (°C)", ylab="Annual precipitation (mm)")
 
+# Normally, one would build a model that would compare the values of the predictor variables at the locations 
+# where something was observed, with those values at the locations where it was not observed. But we do not have
+# data from a systematic survey that determined presence and absence. We have presence-only data. (And, determining
+# absence is not that simple)
+# The common approach to deal with these type of data is to not model presence versus absence, but presence versus 
+# “background”. The “background” is the random (or maximum entropy) expectation; it is what you would get if the 
+# species had no preference for any of the predictor variables (or to other variables that are not in the model, 
+# but correlated with the predictor variables)
+# There is not much point in taking absence data from very far away (tropical Africa or Antarctica). Typically they
+# are taken from more or less the entire study area for which we have presences data
 
 
 
