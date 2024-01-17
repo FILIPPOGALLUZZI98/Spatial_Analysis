@@ -1,4 +1,6 @@
-# Bigfoot observations!
+# Useremo come specie da studiare Bigfoot!!
+# I seguenti pacchetti servono per fare l'analisi e per plottare le osservazioni nella
+# mappa geografica
 if (!require("rspat")) remotes::install_github("rspatial/rspat")
 if (!require("predicts")) install.packages("predicts")
 if (!require("geodata")) install.packages("geodata")
