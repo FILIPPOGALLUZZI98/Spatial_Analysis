@@ -28,9 +28,35 @@ plot(p, col=2:7)
 xy <- centroids(p)
 points(xy, cex=6, pch=20, col='white')
 text(p, 'ID_2', cex=1.5)
+# Here we’ll use adjacency as criterion
+w <- adjacent(p, symmetrical=TRUE)
+class(w)
+# Plot the links between the polygons.
+plot(p, col='gray', border='blue', lwd=2)
+p1 <- xy[w[,1], ]
+p2 <- xy[w[,2], ]
+lines(p1, p2, col='red', lwd=2)
 
 
+# Moran's Index of Spatial Autocorrelation (spdep package)
+ww <-  adjacent(p, "queen", pairs=FALSE)
+ww  ## Spatial Weights Matrix
+ac <- autocor(p$value, ww, "moran")
+ac  ## Autocorrelation Function
 
+# We can make a “Moran scatter plot” to visualize spatial autocorrelation
+n <- length(p)
+ms <- cbind(id=rep(1:n, each=n), y=rep(y, each=n), value=as.vector(wm * y))
+ms <- ms[ms[,3] > 0, ]
+ams <- aggregate(ms[,2:3], list(ms[,1]), FUN=mean)
+ams <- ams[,-1]
+colnames(ams) <- c('y', 'spatially lagged y')
+head(ams)
+plot(ams, pch=20, col="red", cex=2)
+reg <- lm(ams[,2] ~ ams[,1])
+abline(reg, lwd=2)
+abline(h=mean(ams[,2]), lt=2)
+abline(v=ybar, lt=2)
 
 
 
