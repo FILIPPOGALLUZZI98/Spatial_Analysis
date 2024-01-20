@@ -36,8 +36,8 @@ plotRGB(s,stretch="lin")
 # be done with the pairs function.
 pairs(s)
 # Vediamo che il NIR offre informazioni aggiuntive
-s2<-c(b2,b3,b4,b5)
-pairs(s2)
+s<-c(b2,b3,b4,b5)
+pairs(s)
 
 
 
