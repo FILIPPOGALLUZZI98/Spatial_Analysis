@@ -1,5 +1,3 @@
-# NDVI
-
 ndvi<- (b5 - b4) / (b5 + b4)
 plot(ndvi, col=rev(terrain.colors(10)), main = "NDVI")
 
