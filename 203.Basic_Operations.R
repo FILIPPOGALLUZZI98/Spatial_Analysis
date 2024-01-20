@@ -1,7 +1,5 @@
 # NDVI
 
-# Gli indici 'k' e 'i' rappresentano i layer oer calcolare l'NDVI:
-# In questto caso NIR=5; RED=4
 ndvi<- (b5 - b4) / (b5 + b4)
 plot(ndvi, col=rev(terrain.colors(10)), main = "NDVI")
 
