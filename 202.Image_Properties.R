@@ -12,7 +12,6 @@ b2<-im.import("sentinel.dolomites.b2.tif")
 b3<-im.import("sentinel.dolomites.b3.tif")
 b4<-im.import("sentinel.dolomites.b4.tif")
 b5<-im.import("sentinel.dolomites.b8.tif")
-
 # Se vogliamo creare una multi-band image
 s<-c(b2,b3,b4)
 
@@ -39,6 +38,7 @@ pairs(s)
 # Vediamo che il NIR offre informazioni aggiuntive
 s2<-c(b2,b3,b4,b5)
 pairs(s2)
+
 
 
 
