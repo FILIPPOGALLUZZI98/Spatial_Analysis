@@ -30,3 +30,36 @@ plot(land, add=TRUE, legend=FALSE)
 m <- c(-1,0.25, 0.3, 0.4, 0.5, 1) 
 vegc <- classify(ndvi, m) 
 plot(vegc, col = rev(terrain.colors(4)), main = 'NDVI based thresholding')
+
+######################################################################################
+######################################################################################
+# Principal Component Analysis
+# Multi-spectral data are sometimes transformed to helps to reduce the dimensionality and noise in the data. 
+# The PCs transform is a generic data reduction method that can be used to create a few uncorrelated bands from
+# a larger set of correlated bands. You can calculate the same number of principal components as the number of input
+# bands. The first principal component (PC) explains the largest percentage of variance and other PCs explain 
+# additional the variance in decreasing order.
+set.seed(1) 
+sr <- spatSample(s, 10000) 
+plot(sr[,c(4,5)], main = "NIR-Red plot")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
