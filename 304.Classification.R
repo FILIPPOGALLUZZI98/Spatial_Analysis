@@ -1,3 +1,10 @@
+# UNSUPERVISED CLASSIFICATION
+
+# In unsupervised classification, we use the reflectance data, but we don’t supply any  response data (that is, we
+# do not identify any pixel as belonging to a particular class). This may seem odd, but it can be useful when we don’t
+# have much prior knowledge of a study area. Or if you have broad knowledge of the distribution of land cover classes of
+# interest, but no specific ground data. The algorithm groups pixels with similar spectral characteristics into groups. 
+
 # Supponiamo di avere un'immagine satellitare e voglio capire quali zone sono coltivate, quali acqua
 # quali vegetazione etc.
 # Costruisco un grafico con assi X=RED e y=NIR; poi proietto ogni pixel dell'immagine originale nel 
@@ -52,28 +59,17 @@ p1 <- ggplot(tab, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity"
 p2 <- ggplot(tab, aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white")
 p1+p2
 
-
-
-
-
-
-
-
 #####################################################################################
 #####################################################################################
-# UNSUPERVISED CLASSIFICATION
+# UNSUPERVISED CLASSIFICATION (K-Means)
+# Il seguente è un algoritmo per il caso dell'NDVI
 
-# In unsupervised classification, we use the reflectance data, but we don’t supply any
-# response data (that is, we do not identify any pixel as belonging to a particular class).
-# This may seem odd, but it can be useful when we don’t have much prior knowledge of a study area. 
-# Or if you have broad knowledge of the distribution of land cover classes of interest, but no 
-# specific ground data. The algorithm groups pixels with similar spectral characteristics into 
-# groups. We will perform unsupervised classification on a spatial subset of the ndvi layer.
-ndvi <- (b5-b4)/(b4+b5)
+ndvi <- (b5-b4)/(b4+b5)  ## b4 e b5 sono RED e NIR rispettivamente
 nr <- as.data.frame(ndvi, cell=TRUE)
 str(nr)
 set.seed(99)
 kmncluster <- kmeans(nr[,-1], centers=10, iter.max = 500, nstart = 5, algorithm="Lloyd")
+# Create 10 clusters, allow 500 iterations, start with 5 random sets using "Lloyd" method.
 knr <- rast(ndvi, nlyr=1)
 knr[nr$cell] <- kmncluster$cluster
 knr
