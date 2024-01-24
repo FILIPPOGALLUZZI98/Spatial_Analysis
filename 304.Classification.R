@@ -1,3 +1,26 @@
+library(terra)
+library(imageRy)
+library(ggplot2)
+library(patchwork)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################################################################
+#####################################################################################
 # UNSUPERVISED CLASSIFICATION
 
 # In unsupervised classification, we use the reflectance data, but we don’t supply any
