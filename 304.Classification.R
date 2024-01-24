@@ -62,7 +62,7 @@ p1+p2
 #####################################################################################
 #####################################################################################
 # UNSUPERVISED CLASSIFICATION (K-Means)
-# Il seguente è un algoritmo per il caso dell'NDVI
+# Il seguente è un algoritmo per il caso dell'NDVI, ma può essere usato per qualsiasi immagine
 
 ndvi <- (b5-b4)/(b4+b5)  ## b4 e b5 sono RED e NIR rispettivamente
 nr <- as.data.frame(ndvi, cell=TRUE)
