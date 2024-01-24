@@ -1,13 +1,3 @@
-# The Landsat program started in 1972 and is is the longest running Earth-observation satellite program
-# Public satellite data:
-# http://earthexplorer.usgs.gov/
-# https://lpdaacsvc.cr.usgs.gov/appeears/
-# https://search.earthdata.nasa.gov/search
-# https://lpdaac.usgs.gov/data_access/data_pool
-# https://scihub.copernicus.eu/
-# https://aws.amazon.com/public-data-sets/landsat/
-
-
 # Most remote sensing products consist of observations of reflectance data. That is, they are measures 
 # of the intensity of the sun’s radiation that is reflected by the earth. Reflectance is normally measured 
 # for different wavelengths of the electromagnetic spectrum. For example, it can be measured in the near-infrared,
