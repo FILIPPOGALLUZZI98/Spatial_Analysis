@@ -96,8 +96,6 @@ r<-rast(nome_file)
 # You need to add argument 'overwrite=TRUE' if you want to overwrite an existing file
 writeRaster(r, "nome_nuovo_file.tif)  ## 'r' è un 'SpatRaster'
 
-######################################################################################################################
-######################################################################################################################
 ## OPERAZIONI SUL RASTER 
 # To add features on a SpatRaster 
 plot(v, add=TRUE)
