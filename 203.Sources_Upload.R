@@ -70,5 +70,10 @@ https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/resoluti
 ###########################################################################################
 ##  Altre immagini possono essere scaricate da 
 ##  Landsat (30m) and MODIS (>500m) data (NASA)  -->  https://www.youtube.com/watch?v=JN-P04Dkx48
+##  Landsat  -->  https://registry.opendata.aws/usgs-landsat/index.html
+##  Copernicus  -->  https://scihub.copernicus.eu/
+
+
+
 
 
