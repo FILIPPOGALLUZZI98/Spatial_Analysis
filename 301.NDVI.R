@@ -1,10 +1,12 @@
 # NORMALIZED VEGETATION INDEX
 # The DVI is computed as the difference between NIR and Red reflectance
-
+# The NDVI is computed as DVI divided by the sum of the two bands
 library(imageRy)
 library(terra)
-# Lavoriamo con i dati 'matogrosso' contenuti in 'imageRy'
 
+#################################################################################################################
+#################################################################################################################
+# Lavoriamo con i dati 'matogrosso' contenuti in 'imageRy'
 
 # Importo l'immagine del 1992
 m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
@@ -40,12 +42,13 @@ par(mfrow=c(1,2))
 plot(ndvi1992, col=cl)
 plot(ndvi2006, col=cl)
 
+#################################################################################################################
+#################################################################################################################
+##  Lavoriamo ora sui file, sempre contenuti in 'imageRy', di Sentinel
+b4<-im.import("sentinel.dolomites.b4.tif")  ## RED band
+b5<-im.import("sentinel.dolomites.b8.tif")  ## NIR BAND
 
-
-
-
-
-ndvi<- (b5 - b4) / (b5 + b4)
+ndvi<-(b5 - b4) / (b5 + b4)
 plot(ndvi, col=rev(terrain.colors(10)), main = "NDVI")
 
 # HISTOGRAM
