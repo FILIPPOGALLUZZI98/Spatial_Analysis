@@ -1,10 +1,3 @@
-# Important properties to consider while searching the remotely sensed (satellite) data include:
-# ++ Spatial resolution --> the size of the grid cells
-# ++ Temporal resolution --> the return time or frequency that data is collected
-# ++ Spectral resolution --> the parts of the electromagnetic spectrum for which measurements are made
-# ++ Radiometric resolution (sensor sensitivity) --> ability to measure small differences
-# ++ Quality issues --> the presence of cloud-cover or of artifacts in the data
-
 # The Landsat program started in 1972 and is is the longest running Earth-observation satellite program
 # Public satellite data:
 # http://earthexplorer.usgs.gov/
