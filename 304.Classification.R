@@ -77,6 +77,10 @@ par(mfrow = c(1,2))
 plot(ndvi, col = rev(terrain.colors(10)), main = "Landsat-NDVI")
 plot(knr, main = 'Unsupervised classification', type="classes")
 
+
+# Provando ad usare questo procedimento su 'matogrosso', con due classi, restituisce lo stesso risultato 
+# del caso precedente, cioè usando la funzione di imageRy
+
 #####################################################################################
 #####################################################################################
 # SUPERVISED CLASSIFICATION
