@@ -1,3 +1,5 @@
+## Questo riprende il file '300.Spatial_Distribution_Basis.R'
+
 # Useremo come specie da studiare Bigfoot!!
 # I seguenti pacchetti servono per fare l'analisi e per plottare le osservazioni nella
 # mappa geografica
