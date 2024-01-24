@@ -5,6 +5,7 @@ library(terra)
 ####################################################################################################
 ####################################################################################################
 ## VECTORS
+
 # Tipi di dati vettoriali sono: punti, linee, poligoni: la geometria consiste in insiemi di
 # coppie di coordinate (x,y)
 
@@ -65,6 +66,7 @@ plot(pa, add=TRUE, col=rainbow(3), lwd=3, border='white')
 
 ####################################################################################################
 ####################################################################################################
+##  RASTER
 
 # Un oggetto raster divide il mondo in una griglia di rettangoli (pixel) di uguale grandezza, ognuno dei quali
 # ha uno o più valori delle variabili di interesse. Il valore può essere il valore medio o il valore al centro.
