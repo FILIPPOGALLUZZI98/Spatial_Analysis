@@ -48,7 +48,7 @@ file<-system.file("external/species.shp",package="sdm")
 rana<-vect(file); rana
 # Il dataset 'rana' contiene la variabile 'Occurrence' che può assumere 1 (presenze) e 0 (assenze)
 
-plot(rana)  ## Ottengo un grafico dei punti di osservazione, non delle presenze!
+plot(rana)  ## Ottengo un grafico di tutti i punti di osservazione, non delle presenze!!
 # Per selezionare solo le presenze
 pres<-rana[rana$Occurrence==1]; abse<-rana[rana$Occurrence==0]
 plot(pres,col="red"); points(abse,col="yellow")
@@ -56,22 +56,22 @@ plot(pres,col="red"); points(abse,col="yellow")
 
 # Il pacchetto contiene anche altri dati, tra cui i predittori come: temperatura, altitudine, precipitazioni
 # e vegetation cover. Dato che sono file .asc, sono raster data e dobbiamo usare una funzione diversa da 'vect'
-elev <- system.file("external/elevation.asc", package="sdm"); elevmap<-rast(elev)
+elev<-system.file("external/elevation.asc", package="sdm"); elevmap<-rast(elev)
 temp<-system.file("external/temperature.asc",package="sdm"); tempmap<-rast(temp)
 prec<-system.file("external/precipitation.asc",package="sdm"); precmap<-rast(prec)
 vege<-system.file("external/vegetation.asc",package="sdm"); vegemap<-rast(vege)
 
 # A questo punto posso fare i grafici separati oppure:
-preds <- c(elevmap, precmap, tempmap, vegemap)
-cl <- colorRampPalette(c('blue','orange','red','yellow')) (100)
+preds<-c(elevmap, precmap, tempmap, vegemap)
+cl<-colorRampPalette(c('blue','orange','red','yellow')) (100)
 plot(preds, col=cl) 
 
 # Se voglio sovrapporre le presenze
 par(mfrow=c(2,2))
-plot(elevmap); points(pres,cex=1,col="black")
-plot(tempmap); points(pres,cex=1,col="black")
-plot(precmap); points(pres,cex=1,col="black")
-plot(vegemap); points(pres,cex=1,col="black")
+plot(elevmap, main="Elevation"); points(pres,cex=1,col="black")
+plot(tempmap, main="Temperature"); points(pres,cex=1,col="black")
+plot(precmap, main="Precipitations"); points(pres,cex=1,col="black")
+plot(vegemap, main="Vegetation"); points(pres,cex=1,col="black")
 
 
 
