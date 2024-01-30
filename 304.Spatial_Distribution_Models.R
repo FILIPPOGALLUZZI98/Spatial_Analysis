@@ -51,15 +51,43 @@ plot(bg[,1], bg[,12], xlab="Annual mean temperature (°C)",
 points(bfc[,1], bfc[,12], col="red", cex=.6, pch="+")
 legend("topleft", c("observed", "background"), col=c("red", "black"), pch=c("+", "o"), pt.cex=c(.6, .8))
 
+# Una ulteriore analisi può essere quella di dividere i dati in est/ovest
+bfe <- bfc[bf[,1] > -102, ]  ## East
+bfw <- bfc[bf[,1] <= -102, ]  ## West
+
+# A questo punto unisco le presenze ("1") con il background ("0")
+dw <- rbind(cbind(pa=1, bfw), cbind(pa=0, bg))
+de <- rbind(cbind(pa=1, bfe), cbind(pa=0, bg))
+# Creo due dataframe rispettivamente con i dati Ovest ed Est
+dw <- data.frame(dw)
+de <- data.frame(na.omit(de))
 
 
 
 
+## I dati sono pronti per usare un modello: CART (Classification and Regression Trees)
+# Metodi tree-based per la classificazione e la regressione involvono la stratificazione o la segmentazione dello 
+# spazio dei predittori in un numero di regioni semplici. Il tipo di questi approcci è conosciuto come decision tree method
+# e può essere applciato sia a metodi di regressione che di classificazione
+library(rpart)
 
+# Mi concentro sui dati ad Ovest 'dw'
+cart <- rpart(pa~., data=dw)  
+printcp(cart)
+plotcp(cart)
 
+# Usiamo lo stesso modello con meno splits
+cart <- rpart(pa~., data=dw, cp=0.02)
+# And here is the tree
+library(rpart.plot)
+rpart.plot(cart, uniform=TRUE, main="Regression Tree")
 
-
-
+# Ora possiamo usare il modello per mostrare quanto attrattivo è il clima per le specie
+x <- predict(wc, cart)
+x <- mask(x, wc[[1]])
+x <- round(x, 2)
+plot(x, type="class", plg=list(x="bottomleft"))
+# Ci sono 6 valori, perché l'albero di regressione ha 6 valori
 
 
 
