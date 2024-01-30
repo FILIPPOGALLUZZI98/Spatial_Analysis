@@ -112,19 +112,6 @@ plot(rrf)
 
 
 
-## Predict
-# Usiamo ora il modello per fare proiezioni
-# Regressione:
-rp <- predict(wc, rrf, na.rm=TRUE)
-plot(rp)
-
-library(predicts)
-eva <- pa_evaluate(predict(rrf, test[test$pa==1, ]), predict(rrf, test[test$pa==0, ]))
-eva
-plot(eva, "ROC")
-
-
-
 
 
 
