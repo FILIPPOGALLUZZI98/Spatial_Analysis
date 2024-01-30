@@ -65,7 +65,7 @@ de <- data.frame(na.omit(de))
 
 
 
-## I dati sono pronti per usare un modello: CART (Classification and Regression Trees)
+## CART (Classification and Regression Trees)
 # Metodi tree-based per la classificazione e la regressione involvono la stratificazione o la segmentazione dello 
 # spazio dei predittori in un numero di regioni semplici. Il tipo di questi approcci è conosciuto come decision tree method
 # e può essere applciato sia a metodi di regressione che di classificazione
@@ -90,7 +90,7 @@ plot(x, type="class", plg=list(x="bottomleft"))
 # Ci sono 6 valori, perché l'albero di regressione ha 6 valori
 
 
-
+## Random Forest
 # Selezioniamo alcuni punti per la validazione finale
 set.seed(123)
 i <- sample(nrow(dw), 0.2 * nrow(dw))
