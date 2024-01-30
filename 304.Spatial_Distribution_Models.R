@@ -91,6 +91,44 @@ plot(x, type="class", plg=list(x="bottomleft"))
 
 
 
+# Selezioniamo alcuni punti per la validazione finale
+set.seed(123)
+i <- sample(nrow(dw), 0.2 * nrow(dw))
+test <- dw[i,]
+train <- dw[-i,]
+
+# Ora facciamo la classificazione e usiamo il modello 'RandomForest'
+fpa <- as.factor(train[, 'pa'])
+library(randomForest)
+crf <- randomForest(train[, 2:ncol(train)], fpa)  ;  crf
+varImpPlot(crf)  ## Mostra quale variabile è più importante per spiegare il modello
+
+# Per fare la regressione
+trf <- tuneRF(train[, 2:ncol(train)], train[, "pa"])  ;  trf
+mt <- trf[which.min(trf[,2]), 1]  ;  mt
+rrf <- randomForest(train[, 2:ncol(train)], train[, "pa"], mtry=mt, ntree=250)  ;  rff
+plot(rrf)
+
+
+
+
+## Predict
+# Usiamo ora il modello per fare proiezioni
+# Regressione:
+rp <- predict(wc, rrf, na.rm=TRUE)
+plot(rp)
+
+library(predicts)
+eva <- pa_evaluate(predict(rrf, test[test$pa==1, ]), predict(rrf, test[test$pa==0, ]))
+eva
+plot(eva, "ROC")
+
+
+
+
+
+
+
 
 
 
