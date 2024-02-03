@@ -36,7 +36,6 @@ points(sp,cex=.2,col="red")
 # Calcoliamo il numero di specie per ogni paese
 spc <- tapply(v$SPECIES, sp$COUNTRY, function(x)length(unique(x)))
 spc <- data.frame(COUNTRY=names(spc), nspp = spc)
-)
 cns <- merge(cn, spc, by="COUNTRY", all.x=TRUE)
 plot(cns, "nspp", col=rev(terrain.colors(25)), breaks=c(1,5,10,20,30,40,90))
 # Mancano i dati di USA e Brasile (non li considero, altrimenti devo fare degli aggiustamenti)
@@ -64,21 +63,33 @@ points(pts, col='red', cex=.5)
 # SPECIES RICHNESS
 # Per prima cosa abbiamo bisogno di un template raster vuoto
 r <- rast(clb)  ;  res(r) <- 200000
-
 # Ora calcolo la ricchezza di specie
 rich <- rasterize(pts, r, "SPECIES", function(x, ...) length(unique(na.omit(x))))
 plot(rich)  ;  lines(clb)
-
-# Faccio un raster con il numero di osservazioni
+# Poi faccio un raster con il numero di osservazioni
 obs <- rasterize(pts, r, field="SPECIES", fun=function(x, ...)length((na.omit(x))) )
 plot(obs)  ;  lines(clb)
-))
 # Infine una comparazione cella per cella di numero di specie e di osservazioni
 plot(obs, rich, cex=1, xlab="Observations", ylab="Richness")
-# SI nota una chiara relazione positiva tra numero di osservazioni e numero di specie
+# Si nota una chiara relazione positiva tra numero di osservazioni e numero di specie
+# Per eliminare questa distorsione devo usare tecniche come la 'rarefazione' o 'richness estimators'
+
+# Plottiamo il gradiente di latitudine in ricchezza
+d <- v[, c('lat', 'SPECIES')]
+d$lat <- round(d$lat)
+g <- tapply(d$SPECIES, d$lat, function(x) length(unique(na.omit(x))) )
+plot(names(g), g)
+lines(names(g), raster::movingFun(g, 3))
 
 
 
+
+
+
+
+
+
+            
               
 
 
