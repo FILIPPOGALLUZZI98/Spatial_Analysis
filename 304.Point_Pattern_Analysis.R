@@ -80,3 +80,11 @@ mdmin <- mean(dmin)  ## Mean nearest neighbour distance
 wdmin <- apply(dm, 1, which.min)  ## Per conoscere quel punto è il più vicino ad uno assegnato
 
 
+
+
+
+
+
+
+
+
