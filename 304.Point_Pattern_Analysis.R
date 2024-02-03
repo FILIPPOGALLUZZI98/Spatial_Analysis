@@ -82,6 +82,18 @@ wdmin <- apply(dm, 1, which.min)  ## Per conoscere quel punto è il più vicino 
 
 
 
+# Per trasformare uno SpatVector in un Planatr Point Pattern
+library(sf)
+library(terra)
+# Creiamo una variabile con le informazioni della window, in questo caso 'city'
+cityOwin <- as.owin(sf::st_as_sf(city))
+pts <- terra::crds(crime)
+p <- ppp(pts[,1], pts[,2], window=cityOwin)
+plot(p)
+ds <- density(p)
+plot(ds, main='crime density')
+
+
 
 
 
