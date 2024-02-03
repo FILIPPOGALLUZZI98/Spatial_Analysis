@@ -31,7 +31,7 @@ points(cbind(mc[1], mc[2]), pch="*", col="red", cex=5)
 
 
 
-# DENSITA
+# RASTER
 CityArea <- expanse(city)  ## Calcola la superficie dello SpatVector
 dens <- nrow(xy) / CityArea
 
@@ -78,6 +78,12 @@ dm[1:5, 1:5]  ## Voglio vedere le prime 5 righe e colonne
 dmin <- apply(dm, 1, min, na.rm=TRUE)
 mdmin <- mean(dmin)  ## Mean nearest neighbour distance
 wdmin <- apply(dm, 1, which.min)  ## Per conoscere quel punto è il più vicino ad uno assegnato
+
+
+
+
+
+
 
 
 
