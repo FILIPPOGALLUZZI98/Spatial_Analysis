@@ -80,5 +80,8 @@ plot(vegc24, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2024'
 
 
 
-
-
+##### PROVA 
+N<-(S24_8-S24_11)/(S24_8+S24_11)
+plot(N, range=c(0,1))
+## Si vede che gli appezzamenti agricoli hanno molta più acqua della vegeazione intorno,
+## quindi si può stabilire che sono antropizzati
