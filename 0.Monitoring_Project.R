@@ -25,25 +25,26 @@ dev.off()
 
 
 
+
 ## NDVI
 ndvi17<-(S17_8-S17_4)/(S17_8+S17_4)
 ndvi20<-(S20_8-S20_4)/(S20_8+S20_4)
 ndvi24<-(S24_8-S24_4)/(S24_8+S24_4)
 par(mfrow=c(2,2))
-plot(ndvi17, col=rev(terrain.colors(10)), main = "NDVI 2017", range=c(0,1))
-plot(ndvi20, col=rev(terrain.colors(10)), main = "NDVI 2020", range=c(0,1))
-plot(ndvi24, col=rev(terrain.colors(10)), main = "NDVI 2024", range=c(0,1))
+plot(ndvi17, col=rev(terrain.colors(10)), main = "NDVI 2017", range=c(0.4,1))
+plot(ndvi20, col=rev(terrain.colors(10)), main = "NDVI 2020", range=c(0.4,1))
+plot(ndvi24, col=rev(terrain.colors(10)), main = "NDVI 2024", range=c(0.4,1))
 dev.off()
 
 # HISTOGRAMS
 par(mfrow=c(3,1))
-h17<-hist(ndvi17, main = "NDVI 2017 values", xlab = "NDVI", ylab= "Frequency", 
+h17<-hist(ndvi17, main = "2017 NDVI values", xlab = "NDVI", ylab= "Frequency", 
      col = "wheat", xlim = c(0, 1),  breaks = 30, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h20<-hist(ndvi20, main = "NDVI 2020 values", xlab = "NDVI", ylab= "Frequency", 
+h20<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= "Frequency", 
      col = "wheat", xlim = c(0, 1),  breaks = 30, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h24<-hist(ndvi24, main = "NDVI 2024 values", xlab = "NDVI", ylab= "Frequency", 
+h24<-hist(ndvi24, main = "2024 NDVI values", xlab = "NDVI", ylab= "Frequency", 
      col = "wheat", xlim = c(0, 1),  breaks = 30, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 
@@ -56,9 +57,26 @@ plot(veg17, main='Vegetation 2017')
 plot(veg20, main='Vegetation 2020')
 plot(veg24, main='Vegetation 2024')
 
-## D<-veg24-veg17  ## If positive the vegetation grew
-## cl<-cl<-colorRampPalette(c(“black”,”red”,”orange”,”yellow”))(100) 
-## plot(D, col=cl)
+# VEGETATION OVERLAPS
+plotRGB(S17_0, axes=TRUE, stretch="lin")
+plot(veg17, add=TRUE, legend=FALSE)
+plotRGB(S20_0, axes=TRUE, stretch="lin")
+plot(veg20, add=TRUE, legend=FALSE)
+plotRGB(S24_0, axes=TRUE, stretch="lin")
+plot(veg24, add=TRUE, legend=FALSE)
+
+# You can also create classes for different intensity of vegetation. 
+m <- c(-1,0.25, 0.3, 0.4, 0.5, 1) 
+par(mfrow=c(2,2))
+vegc17 <- classify(ndvi17, m) 
+plot(vegc17, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2017')
+vegc20 <- classify(ndvi20, m) 
+plot(vegc20, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2020')
+vegc24 <- classify(ndvi24, m) 
+plot(vegc24, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2024')
+
+
+
 
 
 
