@@ -2,9 +2,6 @@ library(terra)
 library(imageRy)
 setwd("D:R_Studio/Immagini_Progetto_Monitoring")
 
-
-
-
 # FARE CICLO FOR ??
 S17_0<-rast("S17_0.tiff"); S17_2<-rast("S17_2.tiff"); S17_3<-rast("S17_3.tiff"); S17_4<-rast("S17_4.tiff")
 S17_8<-rast("S17_8.tiff"); S17_11<-rast("S17_11.tiff"); S17_12<-rast("S17_12.tiff"); S20_0<-rast("S20_0.tiff")
@@ -15,12 +12,17 @@ S24_12<-rast("S24_12.tiff")
 
 
 
+
+
+
 # PLOT OF REAL COLOR IMAGES
 par(mfrow=c(2,2))
 plotRGB(S17_0, stretch="lin", main="Gen 2017")
 plotRGB(S20_0, stretch="lin", main="Gen 2020")
 plotRGB(S24_0, stretch="lin", main="Feb 2024")
 dev.off()
+
+
 
 
 ## NDVI
@@ -54,9 +56,9 @@ plot(veg17, main='Vegetation 2017')
 plot(veg20, main='Vegetation 2020')
 plot(veg24, main='Vegetation 2024')
 
-D<-veg24-veg17  ## If positive the vegetation grew
-cl<-cl<-colorRampPalette(c(“black”,”red”,”orange”,”yellow”))(100) 
-plot(D, col=cl)
+## D<-veg24-veg17  ## If positive the vegetation grew
+## cl<-cl<-colorRampPalette(c(“black”,”red”,”orange”,”yellow”))(100) 
+## plot(D, col=cl)
 
 
 
