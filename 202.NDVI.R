@@ -75,7 +75,7 @@ plot(land, add=TRUE, legend=FALSE)
 # You can also create classes for different intensity of vegetation. 
 m <- c(-1,0.25, 0.3, 0.4, 0.5, 1) 
 vegc <- classify(ndvi, m) 
-plot(vegc, col = rev(terrain.colors(4)), main = 'NDVI based thresholding')
+plot(vegc, col = rev(terrain.colors(5)), main = 'NDVI based thresholding')
 
 
 
