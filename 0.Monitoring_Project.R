@@ -1,5 +1,6 @@
 library(terra)
 library(imageRy)
+library(viridis)
 setwd("D:R_Studio/Immagini_Progetto_Monitoring")
 S17_2<-rast("S17_2.tiff"); S17_3<-rast("S17_3.tiff"); S17_4<-rast("S17_4.tiff"); S17_8<-rast("S17_8.tiff");
 S17_11<-rast("S17_11.tiff"); S17_12<-rast("S17_12.tiff"); S20_2<-rast("S20_2.tiff"); S20_3<-rast("S20_3.tiff")
@@ -76,6 +77,17 @@ plot(vegc23, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2023'
 
 
 
+## TIME SERIES ON NDVI
+stack<-c(ndvi17,ndvi20,ndvi23)
+cl<-rev(terrain.colors(10))
+plot(stack,col=cl)
+diff=stack[[1]]-stack[[3]]
+cl2<-colorRampPalette(c("blue","white","red"))(100)
+plot(diff,col=cl2)
+## plotRGB(stack,r=1,g=2,b=3) 
+
+
+
 ## NDMI 
 ndmi17<-(S17_8-S17_11)/(S17_8+S17_11)
 ndmi20<-(S20_8-S20_11)/(S20_8+S20_11)
@@ -108,13 +120,14 @@ plot(moist23, col = rev(topo.colors(5)), main = 'NDMI based thresholding 2023')
 
 
 ## VARIABILITY
-sd3_S17<-focal(S17_8, matrix(1/9,3,3), fun=sd)
-sd3_S20<-focal(S20_8, matrix(1/9,3,3), fun=sd)
-sd3_S23<-focal(S23_8, matrix(1/9,3,3), fun=sd)
+S17_sd3<-focal(S17_8, matrix(1/9,3,3), fun=sd)
+S20_sd3<-focal(S20_8, matrix(1/9,3,3), fun=sd)
+S23_sd3<-focal(S23_8, matrix(1/9,3,3), fun=sd)
 par(mfrow=c(2,2))
-cl<-colorRampPalette(viridis(7))(100)plot(sd3_S17, col=cl)
-plot(sd3_S20, col=cl)
-plot(sd3_S23, col=cl)
+cl<-colorRampPalette(viridis(7))(100)
+plot(S17_sd3, col=cl)
+plot(S20_sd3, col=cl)
+plot(S23_sd3, col=cl)
 
 
 
@@ -140,13 +153,6 @@ par(mfrow=c(2,2))
 plot(S23_pc1sd3, col=cl, range=c(0,0.02))
 plot(S17_pc1sd3, col=cl, range=c(0,0.02))
 plot(S20_pc1sd3, col=cl, range=c(0,0.02))
-
-
-
-
-## CLASSIFICATION
-
-
 
 
 
