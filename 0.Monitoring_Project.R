@@ -81,8 +81,32 @@ plot(vegc23, col = rev(terrain.colors(5)), main = 'NDVI based thresholding 2023'
 
 
 
-
-
-
+## NORMALIZED DIFFERENCE MOISTURE INDEX 
+ndmi17<-(S17_8-S17_11)/(S17_8+S17_11)
+ndmi20<-(S20_8-S20_11)/(S20_8+S20_11)
+ndmi23<-(S23_8-S23_11)/(S23_8+S23_11)
+dev.off(); par(mfrow=c(2,2))
+plot(ndmi17, col=rev(topo.colors(5)), main = "NDMI 2017", range=c(0,1))
+plot(ndmi20, col=rev(topo.colors(5)), main = "NDMI 2020", range=c(0,1))
+plot(ndmi23, col=rev(topo.colors(5)), main = "NDMI 2023", range=c(0,1))
+dev.off(); par(mfrow=c(3,1))
+h17<-hist(ndmi17, main = "2017 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
+h20<-hist(ndmi20, main = "2020 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
+h23<-hist(ndmi23, main = "2023 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
+# You can also create classes for different intensity of moisture
+m <- c(-1,0.25, 0.3, 0.4, 0.5, 1) 
+par(mfrow=c(2,2))
+moist17 <- classify(ndmi17, m) 
+plot(moist17, col = rev(topo.colors(5)), main = 'NDMI based thresholding 2017')
+moist20 <- classify(ndmi20, m) 
+plot(moist20, col = rev(topo.colors(5)), main = 'NDMI based thresholding 2020')
+moist23 <- classify(ndmi23, m) 
+plot(moist23, col = rev(topo.colors(5)), main = 'NDMI based thresholding 2023')
 
 
