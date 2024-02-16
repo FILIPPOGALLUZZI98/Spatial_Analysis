@@ -45,7 +45,7 @@ ndvi20<-(S20_8-S20_4)/(S20_8+S20_4)
 ndvi21<-(S21_8-S21_4)/(S21_8+S21_4)
 ndvi22<-(S22_8-S22_4)/(S22_8+S22_4)
 ndvi23<-(S23_8-S23_4)/(S23_8+S23_4)
-dev.off(); par(mfrow=c(2,3))
+par(mfrow=c(2,3))
 plot(ndvi18, col=rev(terrain.colors(10)), main = "NDVI 2019", range=c(0,1))
 plot(ndvi19, col=rev(terrain.colors(10)), main = "NDVI 2019", range=c(0,1))
 plot(ndvi20, col=rev(terrain.colors(10)), main = "NDVI 2020", range=c(0,1))
@@ -54,7 +54,7 @@ plot(ndvi22, col=rev(terrain.colors(10)), main = "NDVI 2022", range=c(0,1))
 plot(ndvi23, col=rev(terrain.colors(10)), main = "NDVI 2023", range=c(0,1))
 
 ## HISTOGRAMS
-dev.off(); par(mfrow=c(2,3))
+par(mfrow=c(2,3))
 h18<-hist(ndvi18, main = "2018 NDVI values", xlab = "NDVI", ylab= "Frequency", 
      col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
@@ -81,16 +81,15 @@ veg20 <- clamp(ndvi20, 0.4, values=FALSE)
 veg21 <- clamp(ndvi21, 0.4, values=FALSE) 
 veg22 <- clamp(ndvi22, 0.4, values=FALSE) 
 veg23 <- clamp(ndvi23, 0.4, values=FALSE) 
-dev.off(); par(mfrow=c(2,3))
+par(mfrow=c(2,3))
 plot(veg18, main='Vegetation 2018')
 plot(veg19, main='Vegetation 2019')
 plot(veg20, main='Vegetation 2020')
 plot(veg21, main='Vegetation 2021')
 plot(veg22, main='Vegetation 2022')
 plot(veg23, main='Vegetation 2023')
-
 # VEGETATION OVERLAPS
-dev.off(); par(mfrow=c(2,3))
+par(mfrow=c(2,3))
 plotRGB(S18, axes=TRUE, stretch="lin")
 plot(veg18, add=TRUE, legend=FALSE)
 plotRGB(S19, axes=TRUE, stretch="lin")
@@ -103,6 +102,95 @@ plotRGB(S22, axes=TRUE, stretch="lin")
 plot(veg22, add=TRUE, legend=FALSE)
 plotRGB(S23, axes=TRUE, stretch="lin")
 plot(veg23, add=TRUE, legend=FALSE)
+
+## TIME SERIES ON NDVI
+stack<-c(ndvi18,ndvi19,ndvi20,ndvi21,ndvi22,ndvi23)
+cl<-rev(terrain.colors(10))
+plot(stack,col=cl)
+diff1=stack[[1]]-stack[[2]]
+diff2=stack[[1]]-stack[[3]]
+diff3=stack[[1]]-stack[[4]]
+diff4=stack[[1]]-stack[[5]]
+diff5=stack[[1]]-stack[[6]]
+cl2<-colorRampPalette(c("blue","white","red"))(100)
+par(mfrow=c(2,3))
+plot(diff1,col=cl2)
+plot(diff2,col=cl2)
+plot(diff3,col=cl2)
+plot(diff4,col=cl2)
+plot(diff5,col=cl2)
+
+## plotRGB(stack,r=1,g=2,b=3) 
+
+
+
+## NDMI
+ndmi18<-(S18_8-S18_11)/(S18_8+S18_11)
+ndmi19<-(S19_8-S19_11)/(S19_8+S19_11)
+ndmi20<-(S20_8-S20_11)/(S20_8+S20_11)
+ndmi21<-(S21_8-S21_11)/(S21_8+S21_11)
+ndmi22<-(S22_8-S22_11)/(S22_8+S22_11)
+ndmi23<-(S23_8-S23_11)/(S23_8+S23_11)
+par(mfrow=c(2,3))
+plot(ndmi18, col=rev(topo.colors(5)), main = "NDMI 2018", range=c(0,1))
+plot(ndmi19, col=rev(topo.colors(5)), main = "NDMI 2019", range=c(0,1))
+plot(ndmi20, col=rev(topo.colors(5)), main = "NDMI 2020", range=c(0,1))
+plot(ndmi21, col=rev(topo.colors(5)), main = "NDMI 2021", range=c(0,1))
+plot(ndmi22, col=rev(topo.colors(5)), main = "NDMI 2022", range=c(0,1))
+plot(ndmi23, col=rev(topo.colors(5)), main = "NDMI 2023", range=c(0,1))
+
+## HISTOGRAMS
+par(mfrow=c(2,3))
+h18<-hist(ndmi18, main = "2018 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+h19<-hist(ndmi19, main = "2019 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+h20<-hist(ndmi20, main = "2020 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+h21<-hist(ndmi21, main = "2021 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+h22<-hist(ndmi22, main = "2022 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+h23<-hist(ndmi23, main = "2023 NDMI values", xlab = "NDMI", ylab= "Frequency", 
+     col = "wheat", xlim = c(-1, 1),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 0.1), labels = seq(-1, 1, 0.1))
+
+## MOISTURE
+moist18 <- clamp(moist18, 0.4, values=FALSE) 
+moist19 <- clamp(moist19, 0.4, values=FALSE) 
+moist20 <- clamp(moist20, 0.4, values=FALSE) 
+moist21 <- clamp(moist21, 0.4, values=FALSE) 
+moist22 <- clamp(moist22, 0.4, values=FALSE) 
+moist23 <- clamp(moist23, 0.4, values=FALSE) 
+par(mfrow=c(2,3))
+plot(moist18, col=rev(topo.colors(5)), main='Moisture 2018')
+plot(moist19, col=rev(topo.colors(5)), main='Moisture 2019')
+plot(moist20, col=rev(topo.colors(5)), main='Moisture 2020')
+plot(moist21, col=rev(topo.colors(5)), main='Moisture 2021')
+plot(moist22, col=rev(topo.colors(5)), main='Moisture 2022')
+plot(moist23, col=rev(topo.colors(5)), main='Moisture 2023')
+# MOISTURE OVERLAPS
+par(mfrow=c(2,3))
+plotRGB(S18, axes=TRUE, stretch="lin")
+plot(moist18, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+plotRGB(S19, axes=TRUE, stretch="lin")
+plot(moist19, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+plotRGB(S20, axes=TRUE, stretch="lin")
+plot(moist20, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+plotRGB(S21, axes=TRUE, stretch="lin")
+plot(moist21, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+plotRGB(S22, axes=TRUE, stretch="lin")
+plot(moist22, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+plotRGB(S23, axes=TRUE, stretch="lin")
+plot(moist23, col=rev(topo.colors(5)), add=TRUE, legend=FALSE)
+
+
+
 
 
 
