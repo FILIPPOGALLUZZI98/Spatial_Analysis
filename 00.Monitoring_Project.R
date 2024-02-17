@@ -6,7 +6,6 @@ setwd("D:R_Studio/Immagini_Progetto_Monitoring")
 
 # ??? Le immagini sono prese da sentinel-2a e sono le immagini di aprile per ogni anno dal 2018 al 2023
 
-
 # Faccio dei cicli for per assegnare le variabili alle immagini scaricate
 nomi_var <- c()
 for (i in 18:23) {
@@ -149,12 +148,12 @@ ndmi21<-(S21_8-S21_11)/(S21_8+S21_11)
 ndmi22<-(S22_8-S22_11)/(S22_8+S22_11)
 ndmi23<-(S23_8-S23_11)/(S23_8+S23_11)
 par(mfrow=c(2,3))
-plot(ndmi18, col=rev(topo.colors(5)), main = "NDMI 2018", range=c(0,1))
-plot(ndmi19, col=rev(topo.colors(5)), main = "NDMI 2019", range=c(0,1))
-plot(ndmi20, col=rev(topo.colors(5)), main = "NDMI 2020", range=c(0,1))
-plot(ndmi21, col=rev(topo.colors(5)), main = "NDMI 2021", range=c(0,1))
-plot(ndmi22, col=rev(topo.colors(5)), main = "NDMI 2022", range=c(0,1))
-plot(ndmi23, col=rev(topo.colors(5)), main = "NDMI 2023", range=c(0,1))
+plot(ndmi18, col=rev(topo.colors(5)), main = "NDMI 2018")
+plot(ndmi19, col=rev(topo.colors(5)), main = "NDMI 2019")
+plot(ndmi20, col=rev(topo.colors(5)), main = "NDMI 2020")
+plot(ndmi21, col=rev(topo.colors(5)), main = "NDMI 2021")
+plot(ndmi22, col=rev(topo.colors(5)), main = "NDMI 2022")
+plot(ndmi23, col=rev(topo.colors(5)), main = "NDMI 2023")
 
 ## HISTOGRAMS
 par(mfrow=c(2,3))
