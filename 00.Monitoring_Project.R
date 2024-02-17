@@ -96,6 +96,30 @@ plot(veg22, add=TRUE, legend=FALSE)
 plotRGB(S23, axes=TRUE, stretch="lin")
 plot(veg23, add=TRUE, legend=FALSE)
 
+# ??? VEGETATION CLASSIFICATION 
+m <- c(-1,0.5, 0.7, 0.8, 0.9, 1) 
+par(mfrow=c(2,3))
+vegc18 <- classify(veg18, m) 
+plot(vegc18, col = rev(terrain.colors(5)), main = 'Vegetation based thresholding 2018')
+vegc19 <- classify(veg19, m) 
+plot(vegc19, col = rev(terrain.colors(5)), main = 'Vegetation based thresholding 2019')
+vegc20 <- classify(veg20, m) 
+plot(vegc20, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2020')
+vegc21 <- classify(veg21, m) 
+plot(vegc21, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2021')
+vegc22 <- classify(veg22, m) 
+plot(vegc22, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2022')
+vegc23 <- classify(veg23, m) 
+plot(vegc23, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2023')
+
+
+
+
+
+
+
+
+
 ## TIME SERIES ON NDVI
 stack<-c(ndvi18,ndvi19,ndvi20,ndvi21,ndvi22,ndvi23)
 cl<-rev(terrain.colors(10))
