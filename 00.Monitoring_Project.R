@@ -2,9 +2,9 @@ library(terra)
 library(imageRy)
 library(viridis)
 setwd("D:R_Studio/Immagini_Progetto_Monitoring")
-
-
 # ??? Le immagini sono prese da sentinel-2a e sono le immagini di aprile per ogni anno dal 2018 al 2023
+
+
 
 # Faccio dei cicli for per assegnare le variabili alle immagini scaricate
 nomi_var <- c()
@@ -17,7 +17,6 @@ for (i in 18:23) {
     nomi_file <- c(nomi_file, paste("S", i, "_", j,".tiff", sep=""))}}
 for (i in 1:length(nomi_var)) {
   assign(nomi_var[i], rast(nomi_file[i]))}
-
 
 # PLOT REAL COLOR IMAGES
 S18<-c(S18_4,S18_3,S18_2,S18_8)
@@ -111,24 +110,17 @@ plot(vegc22, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 
 vegc23 <- classify(veg23, m) 
 plot(vegc23, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2023')
 
-
-
-
-
-
-
-
-
 ## TIME SERIES ON NDVI
 stack<-c(ndvi18,ndvi19,ndvi20,ndvi21,ndvi22,ndvi23)
 cl<-rev(terrain.colors(10))
-plot(stack,col=cl)
+plot(stack,col=cl, range=c(0,1))
 diff1=stack[[1]]-stack[[2]]
 diff2=stack[[1]]-stack[[3]]
 diff3=stack[[1]]-stack[[4]]
 diff4=stack[[1]]-stack[[5]]
 diff5=stack[[1]]-stack[[6]]
 cl2<-colorRampPalette(c("blue","white","red"))(100)
+## Le zone rosse sono quelle con NDVI diminuito, viceversa con il blu
 par(mfrow=c(2,3))
 plot(diff1,col=cl2)
 plot(diff2,col=cl2)
@@ -136,7 +128,24 @@ plot(diff3,col=cl2)
 plot(diff4,col=cl2)
 plot(diff5,col=cl2)
 
-## plotRGB(stack,r=1,g=2,b=3) 
+# Per la vegetazione
+stack2<-c(veg18, veg19, veg20, veg21, veg22, veg23)
+cl<-rev(terrain.colors(10))
+plot(stack2,col=cl, range=c(0,1))
+diff21=stack2[[1]]-stack2[[2]]
+diff22=stack2[[1]]-stack2[[3]]
+diff23=stack2[[1]]-stack2[[4]]
+diff24=stack2[[1]]-stack2[[5]]
+diff25=stack2[[1]]-stack2[[6]]
+cl2<-colorRampPalette(c("blue","white","red"))(100)
+## Le zone rosse sono quelle con veg diminuita, viceversa con il blu
+par(mfrow=c(2,3))
+plot(diff21,col=cl2)
+plot(diff22,col=cl2)
+plot(diff23,col=cl2)
+plot(diff24,col=cl2)
+plot(diff25,col=cl2)
+
 
 
 
