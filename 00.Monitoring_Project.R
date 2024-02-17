@@ -110,6 +110,27 @@ plot(vegc22, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 
 vegc23 <- classify(veg23, m) 
 plot(vegc23, col = rev(terrain.colors(5)), main = 'Vegetationbased thresholding 2023')
 
+# TREND OF NDVI
+par(mfrow=c(2,3))
+h_1<-hist(ndvi18, main = "2018 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_2<-hist(ndvi19, main = "2019 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_3<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_4<-hist(ndvi21, main = "2021 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_5<-hist(ndvi22, main = "2022 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_6<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+
 ## TIME SERIES ON NDVI
 stack<-c(ndvi18,ndvi19,ndvi20,ndvi21,ndvi22,ndvi23)
 cl<-rev(terrain.colors(10))
