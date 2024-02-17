@@ -1,7 +1,7 @@
 library(terra)
 library(imageRy)
 library(viridis)
-setwd("D:R_Studio/Immagini_Progetto_Monitoring")
+setwd("D:R_Studio/Nuova_cartella")
 
 
 # Faccio dei cicli for per assegnare le variabili alle immagini scaricate
@@ -68,7 +68,25 @@ hf<-hist(ndvif, main = "Oct NDVI values", xlab = "NDVI", ylab= "Frequency",
      col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 
-
+par(mfrow=c(2,3))
+h_1<-hist(ndvia, main = "Jan", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_2<-hist(ndvib, main = "March", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_3<-hist(ndvic, main = "May", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_4<-hist(ndvid, main = "July", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_5<-hist(ndvie, main = "Sept", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_6<-hist(ndvif, main = "Oct", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
 
 
 
