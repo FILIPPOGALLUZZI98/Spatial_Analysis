@@ -1,43 +1,56 @@
 ## VARIABILITY
-S18_sd6<-focal(S18, matrix(1/36,6,6), fun=sd)
-S19_sd6<-focal(S19, matrix(1/36,6,6), fun=sd)
-S20_sd6<-focal(S20, matrix(1/36,6,6), fun=sd)
-S21_sd6<-focal(S21, matrix(1/36,6,6), fun=sd)
-S22_sd6<-focal(S22, matrix(1/36,6,6), fun=sd)
-S23_sd6<-focal(S23, matrix(1/36,6,6), fun=sd)
+m <- matrix(1/49,7,7)
+cl<-colorRampPalette(viridis(7))(255)
+
+S18_sdm<-focal(S18_8, m, fun=sd)
+S19_sdm<-focal(S19_8, m, fun=sd)
+S20_sdm<-focal(S20_8, m, fun=sd)
+S21_sdm<-focal(S21_8, m, fun=sd)
+S22_sdm<-focal(S22_8, m, fun=sd)
+S23_sdm<-focal(S23_8, m, fun=sd)
 par(mfrow=c(2,3))
-cl<-colorRampPalette(viridis(7))(100)
-plot(S18_sd6, col=cl)
-plot(S19_sd6, col=cl)
-plot(S20_sd6, col=cl)
-plot(S21_sd6, col=cl)
-plot(S22_sd6, col=cl)
-plot(S23_sd6, col=cl)
-
-
-
+plot(S18_sdm, col=cl, axis=NULL)
+plot(S19_sdm, col=cl, axis=NULL)
+plot(S20_sdm, col=cl, axis=NULL)
+plot(S21_sdm, col=cl, axis=NULL)
+plot(S22_sdm, col=cl, axis=NULL)
+plot(S23_sdm, col=cl, axis=NULL)
 
 ## PCA
 S18pc<-im.pca2(S18) 
 S18_pc1<-S18pc$PC1
+S19pc<-im.pca2(S19) 
+S19_pc1<-S19pc$PC1
 S20pc<-im.pca2(S20) 
 S20_pc1<-S20pc$PC1
+S21pc<-im.pca2(S21) 
+S21_pc1<-S21pc$PC1
+S22pc<-im.pca2(S22) 
+S22_pc1<-S22pc$PC1
 S23pc<-im.pca2(S23) 
 S23_pc1<-S23pc$PC1
+par(mfrow=c(2,3))
+plot(S18_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+plot(S19_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+plot(S20_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+plot(S21_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+plot(S22_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+plot(S23_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
 
-par(mfrow=c(2,2))
-plot(S18_pc1,col=cl, range=c(-0.3,0.6))
-plot(S20_pc1,col=cl, range=c(-0.3,0.6))
-plot(S23_pc1,col=cl, range=c(-0.3,0.6))
-
-dev.off()
-S18_pc1sd3<-focal(S18_pc1, matrix(1/9, 3, 3), fun=sd)
-S20_pc1sd3<-focal(S20_pc1, matrix(1/9, 3, 3), fun=sd)
-S23_pc1sd3<-focal(S23_pc1, matrix(1/9, 3, 3), fun=sd)
-par(mfrow=c(2,2))
-plot(S18_pc1sd3, col=cl, range=c(0,0.02))
-plot(S23_pc1sd3, col=cl, range=c(0,0.02))
-plot(S20_pc1sd3, col=cl, range=c(0,0.02))
+# PCA variability
+S18_pc1sdm<-focal(S18_pc1, m, fun=sd)
+S19_pc1sdm<-focal(S18_pc1, m, fun=sd)
+S20_pc1sdm<-focal(S20_pc1, m, fun=sd)
+S21_pc1sdm<-focal(S20_pc1, m, fun=sd)
+S22_pc1sdm<-focal(S20_pc1, m, fun=sd)
+S23_pc1sdm<-focal(S23_pc1, m, fun=sd)
+par(mfrow=c(2,3))
+plot(S18_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S19_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S20_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S21_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S22_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S23_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
 
 
 
