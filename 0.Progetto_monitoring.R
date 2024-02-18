@@ -92,12 +92,9 @@ h_6<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= "Frequency",
 axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
 
 # VEGETATION
-veg18 <- clamp(ndvi18, 0.4, values=FALSE) 
-veg19 <- clamp(ndvi19, 0.4, values=FALSE) 
-veg20 <- clamp(ndvi20, 0.4, values=FALSE) 
-veg21 <- clamp(ndvi21, 0.4, values=FALSE) 
-veg22 <- clamp(ndvi22, 0.4, values=FALSE) 
-veg23 <- clamp(ndvi23, 0.4, values=FALSE) 
+veg18 <- clamp(ndvi18, 0.4, values=FALSE); veg19 <- clamp(ndvi19, 0.4, values=FALSE) 
+veg20 <- clamp(ndvi20, 0.4, values=FALSE); veg21 <- clamp(ndvi21, 0.4, values=FALSE) 
+veg22 <- clamp(ndvi22, 0.4, values=FALSE); veg23 <- clamp(ndvi23, 0.4, values=FALSE) 
 
 # VEGETATION OVERLAPS
 # Tutto quello che non è vegetazione è bianco, cioè è fuori scala:
@@ -174,19 +171,19 @@ axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 stack2<-c(veg18, veg19, veg20, veg21, veg22, veg23)
 cl<-rev(terrain.colors(10))
 # plot(stack2,col=cl, range=c(0,1))
-diff21=stack2[[1]]-stack2[[2]]
-diff22=stack2[[1]]-stack2[[3]]
-diff23=stack2[[1]]-stack2[[4]]
-diff24=stack2[[1]]-stack2[[5]]
-diff25=stack2[[1]]-stack2[[6]]
+diff21=stack2[[2]]-stack2[[1]]
+diff22=stack2[[3]]-stack2[[1]]
+diff23=stack2[[4]]-stack2[[1]]
+diff24=stack2[[5]]-stack2[[1]]
+diff25=stack2[[6]]-stack2[[1]]
 cl2<-colorRampPalette(c("blue","white","red"))(100)
-## Le zone rosse sono quelle con veg diminuita, viceversa con il blu
+## Le zone rosse sono quelle con veg aumentata, viceversa con il blu
 par(mfrow=c(2,3))
-plot(diff21,col=cl2, range=c(-0.45,0.45), main="Comparison 2018-2019")
-plot(diff22,col=cl2, range=c(-0.45,0.45), main="Comparison 2018-2020")
-plot(diff23,col=cl2, range=c(-0.45,0.45), main="Comparison 2018-2021")
-plot(diff24,col=cl2, range=c(-0.45,0.45), main="Comparison 2018-2022")
-plot(diff25,col=cl2, range=c(-0.45,0.45), main="Comparison 2018-2023")
+plot(diff21,col=cl2, range=c(-0.45,0.45), main="Comparison 2019-2018")
+plot(diff22,col=cl2, range=c(-0.45,0.45), main="Comparison 2020-2018")
+plot(diff23,col=cl2, range=c(-0.45,0.45), main="Comparison 2021-2018")
+plot(diff24,col=cl2, range=c(-0.45,0.45), main="Comparison 2022-2018")
+plot(diff25,col=cl2, range=c(-0.45,0.45), main="Comparison 2023-2018")
 
 
 
@@ -300,7 +297,7 @@ plot(veg23, col="darkgreen", legend=FALSE, axes=FALSE)
 
 
 
-# MONTHLY ANALYSIS 2021-2022
+# MONTHLY ANALYSIS 2022-2021
 # da a-f --> 2022
 # da g a n --> 2021
 # Faccio dei cicli for per assegnare le variabili alle immagini scaricate
@@ -321,7 +318,6 @@ Sd<-c(Sd_4,Sd_3,Sd_2,Sd_8); Se<-c(Se_4,Se_3,Se_2,Se_8); Sf<-c(Sf_4,Sf_3,Sf_2,Sf_
 Sg<-c(Sg_4,Sg_3,Sg_2,Sg_8); Sh<-c(Sh_4,Sh_3,Sh_2,Sh_8); Si<-c(Si_4,Si_3,Si_2,Si_8)
 Sl<-c(Sl_4,Sl_3,Sl_2,Sl_8); Sm<-c(Sm_4,Sm_3,Sm_2,Sm_8); Sn<-c(Sn_4,Sn_3,Sn_2,Sn_8)
 
-
 par(mfrow=c(2,3))
 plotRGB(Sa, stretch="lin", main="January 2022")
 plotRGB(Sc, stretch="lin", main="May 2022")
@@ -331,29 +327,26 @@ plotRGB(Si, stretch="lin", main="May 2021")
 plotRGB(Sm, stretch="lin", main="September 2021")
 
 # NDVI COMPARISON
-ndvia<-(Sa_8-Sa_4)/(Sa_8+Sa_4)
-ndvib<-(Sb_8-Sb_4)/(Sb_8+Sb_4)
-ndvic<-(Sc_8-Sc_4)/(Sc_8+Sc_4)
-ndvid<-(Sd_8-Sd_4)/(Sd_8+Sd_4)
-ndvie<-(Se_8-Se_4)/(Se_8+Se_4)
-ndvif<-(Sf_8-Sf_4)/(Sf_8+Sf_4)
-ndvig<-(Sg_8-Sg_4)/(Sg_8+Sg_4)
-ndvih<-(Sh_8-Sh_4)/(Sh_8+Sh_4)
-ndvii<-(Si_8-Si_4)/(Si_8+Si_4)
-ndvil<-(Sl_8-Sl_4)/(Sl_8+Sl_4)
-ndvim<-(Sm_8-Sm_4)/(Sm_8+Sm_4)
-ndvin<-(Sn_8-Sn_4)/(Sn_8+Sn_4)
-veg1 <- clamp(ndvia, 0.4, values=FALSE); veg2 <- clamp(ndvib, 0.4, values=FALSE) 
-veg3 <- clamp(ndvic, 0.4, values=FALSE); veg4 <- clamp(ndvid, 0.4, values=FALSE) 
-veg5 <- clamp(ndvie, 0.4, values=FALSE); veg6 <- clamp(ndvif, 0.4, values=FALSE) 
-veg7 <- clamp(ndvig, 0.4, values=FALSE); veg8 <- clamp(ndvih, 0.4, values=FALSE) 
-veg9 <- clamp(ndvii, 0.4, values=FALSE); veg10 <- clamp(ndvil, 0.4, values=FALSE) 
-veg11 <- clamp(ndvim, 0.4, values=FALSE); veg12 <- clamp(ndvin, 0.4, values=FALSE) 
-d1 <- veg1-veg7; d2 <- veg2-veg8; d3 <- veg3-veg9
-d4 <- veg4-veg10; d5 <- veg5-veg11; d6 <-veg6-veg12
+ndvia<-(Sa_8-Sa_4)/(Sa_8+Sa_4); ndvib<-(Sb_8-Sb_4)/(Sb_8+Sb_4)
+ndvic<-(Sc_8-Sc_4)/(Sc_8+Sc_4); ndvid<-(Sd_8-Sd_4)/(Sd_8+Sd_4)
+ndvie<-(Se_8-Se_4)/(Se_8+Se_4); ndvif<-(Sf_8-Sf_4)/(Sf_8+Sf_4)
+ndvig<-(Sg_8-Sg_4)/(Sg_8+Sg_4); ndvih<-(Sh_8-Sh_4)/(Sh_8+Sh_4)
+ndvii<-(Si_8-Si_4)/(Si_8+Si_4); ndvil<-(Sl_8-Sl_4)/(Sl_8+Sl_4)
+ndvim<-(Sm_8-Sm_4)/(Sm_8+Sm_4); ndvin<-(Sn_8-Sn_4)/(Sn_8+Sn_4)
+
+vega <- clamp(ndvia, 0.4, values=FALSE); vegb <- clamp(ndvib, 0.4, values=FALSE) 
+vegc <- clamp(ndvic, 0.4, values=FALSE); vegd <- clamp(ndvid, 0.4, values=FALSE) 
+vege <- clamp(ndvie, 0.4, values=FALSE); vegf <- clamp(ndvif, 0.4, values=FALSE) 
+vegg <- clamp(ndvig, 0.4, values=FALSE); vegh <- clamp(ndvih, 0.4, values=FALSE) 
+vegi <- clamp(ndvii, 0.4, values=FALSE); vegl <- clamp(ndvil, 0.4, values=FALSE) 
+vegm <- clamp(ndvim, 0.4, values=FALSE); vegn <- clamp(ndvin, 0.4, values=FALSE) 
+
+d1 <- vega-vegg; d2 <- vegb-vegh; d3 <- vegc-vegi
+d4 <- vegd-vegl; d5 <- vege-vegm; d6 <-vegf-vegn
 
 par(mfrow=c(2,3))
 cl<-colorRampPalette(c("blue","white","red"))(100)
+# Valori rossi = vegetazione aumentata
 plot(d1, col=cl, main = "NDVI Jan", range=c(-0.4,0.4))
 plot(d2, col=cl, main = "NDVI Mar", range=c(-0.4,0.4))
 plot(d3, col=cl, main = "NDVI May", range=c(-0.4,0.4))
@@ -361,8 +354,28 @@ plot(d4, col=cl, main = "NDVI July", range=c(-0.4,0.4))
 plot(d5, col=cl, main = "NDVI Sept", range=c(-0.4,0.4))
 plot(d6, col=cl, main = "NDVI Nov", range=c(-0.4,0.4))
 
-
-
+# TREND OF NDVI
+# Questo non considera l'intensità, ma solo se le regioni in cui ci sono state variazioni
+# negative sono di più o di meno di quelle con variazioni positive
+par(mfrow=c(2,3))
+h_1<-hist(d1, main = "January", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
+h_2<-hist(d2, main = "March", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
+h_3<-hist(d3, main = "May", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
+h_4<-hist(d4, main = "July", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
+h_5<-hist(d5, main = "September", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
+h_6<-hist(d6, main = "October", xlab = "", ylab= "Frequency", 
+     col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
+axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
 
 
 
