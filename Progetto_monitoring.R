@@ -152,7 +152,23 @@ h_6<-hist(veg23, main = "2023 VEG values", xlab = "NDVI", ylab= "Frequency",
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 
-
+# Per la vegetazione
+stack2<-c(veg18, veg19, veg20, veg21, veg22, veg23)
+cl<-rev(terrain.colors(10))
+# plot(stack2,col=cl, range=c(0,1))
+diff21=stack2[[1]]-stack2[[2]]
+diff22=stack2[[1]]-stack2[[3]]
+diff23=stack2[[1]]-stack2[[4]]
+diff24=stack2[[1]]-stack2[[5]]
+diff25=stack2[[1]]-stack2[[6]]
+cl2<-colorRampPalette(c("blue","white","red"))(100)
+## Le zone rosse sono quelle con veg diminuita, viceversa con il blu
+par(mfrow=c(2,3))
+plot(diff21,col=cl2, range=c(-0.45,0.45))
+plot(diff22,col=cl2, range=c(-0.45,0.45))
+plot(diff23,col=cl2, range=c(-0.45,0.45))
+plot(diff24,col=cl2, range=c(-0.45,0.45))
+plot(diff25,col=cl2, range=c(-0.45,0.45))
 
 
 
