@@ -98,6 +98,7 @@ veg20 <- clamp(ndvi20, 0.4, values=FALSE)
 veg21 <- clamp(ndvi21, 0.4, values=FALSE) 
 veg22 <- clamp(ndvi22, 0.4, values=FALSE) 
 veg23 <- clamp(ndvi23, 0.4, values=FALSE) 
+
 # VEGETATION OVERLAPS
 # Tutto quello che non è vegetazione è bianco, cioè è fuori scala:
 par(mfrow=c(2,3))
@@ -114,6 +115,23 @@ plot(veg22, add=TRUE, legend=TRUE)
 plotRGB(S23, axes=TRUE, stretch="lin")  
 plot(veg23, add=TRUE, legend=TRUE)
 
+# FALSE COMPOSITE
+par(mfrow=c(1,2))
+im.plotRGB(S18,4,1,2)
+plot(veg18, legend=FALSE, axes=FALSE)
+title(main="Titolo comune per entrambi i grafici")
+im.plotRGB(S19,4,1,2)
+plot(veg19, legend=FALSE, axes=FALSE)
+im.plotRGB(S20,4,1,2)
+plot(veg20, legend=FALSE, axes=FALSE)
+im.plotRGB(S21,4,1,2)
+plot(veg21, legend=FALSE, axes=FALSE)
+im.plotRGB(S22,4,1,2)
+plot(veg22, legend=FALSE, axes=FALSE)
+im.plotRGB(S23,4,1,2)
+plot(veg23, legend=FALSE, axes=FALSE)
+
+# CLASSIFICATION FOR VEGETATION
 m <- c(0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
 cl<-colorRampPalette(c("white","darkgoldenrod1","darkkhaki","darkolivegreen1","darkolivegreen3","darkgreen"))(6)
 cl2<-colorRampPalette(c("white","darkgoldenrod1","darkkhaki","darkolivegreen1","darkolivegreen3"))(5)
