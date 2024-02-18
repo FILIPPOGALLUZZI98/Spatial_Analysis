@@ -131,7 +131,26 @@ plot(vegc22, col = cl, main = 'Vegetation 2022')
 vegc23 <- classify(veg23, m) 
 plot(vegc23, col = cl, main = 'Vegetation 2023')
 
-
+# TREND OF VEGETATION
+par(mfrow=c(2,3))
+h_1<-hist(veg18, main = "2018 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_2<-hist(veg19, main = "2019 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_3<-hist(veg20, main = "2020 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_4<-hist(veg21, main = "2021 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 3, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_5<-hist(veg22, main = "2022 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_6<-hist(veg23, main = "2023 VEG values", xlab = "NDVI", ylab= "Frequency", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 250000),  breaks = 5, xaxt = "n") 
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 
 
 
