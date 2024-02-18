@@ -175,12 +175,83 @@ plot(diff25,col=cl2, range=c(-0.45,0.45))
 
 
 
+## NDMI DA FARE
+
+
+
+
+#############################################################
+#############################################################
+#############################################################
+#############################################################
 
 
 
 
 
 
+## PCA E VARIABILITY DA FARE
+
+
+
+
+#############################################################
+#############################################################
+#############################################################
+#############################################################
+
+
+
+
+
+
+## CLASSIFICATION
+cl<-colorRampPalette(c("coral","white","darkgreen"))(100)
+S18c <- im.classify(S18, seed=1, num_clusters=3, do_plot = FALSE)
+par(mfrow=c(1,2))
+plotRGB(S18, stretch="lin", main="April 2018")
+plot(S18c, main="Classification 2018",col=cl, legend=FALSE)
+par(mfrow=c(1,2))
+S19c <- im.classify(S19, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S19, stretch="lin", main="April 2019")
+plot(S19c, main="Classification 2019",col=cl, legend=FALSE)
+par(mfrow=c(1,2))
+S20c <- im.classify(S20, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S20, stretch="lin", main="April 2020")
+plot(S20c, main="Classification 2020",col=cl, legend=FALSE)
+par(mfrow=c(1,2))
+S21c <- im.classify(S21, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S21, stretch="lin", main="April 2021")
+plot(S21c, main="Classification 2021",col=cl, legend=FALSE)
+par(mfrow=c(1,2))
+S22c <- im.classify(S22, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S22, stretch="lin", main="April 2022")
+plot(S22c, main="Classification 2022",col=cl, legend=FALSE)
+par(mfrow=c(1,2))
+S23c <- im.classify(S23, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S23, stretch="lin", main="April 2023")
+plot(S23c, main="Classification 2023",col=cl, legend=FALSE)
+
+# COMPARISON WITH VEGETATION (whtihout grandient of color)
+cl<-colorRampPalette(c("coral","white","darkgreen"))(100)
+par(mfrow=c(1,2))
+plot(S18c, main="Classification 2018",col=cl, legend=FALSE)
+plot(veg18, col="darkgreen", legend=FALSE)
+par(mfrow=c(1,2))
+plot(S19c, main="Classification 2019",col=cl, legend=FALSE)
+plot(veg19, col="darkgreen", legend=FALSE)
+par(mfrow=c(1,2))
+plot(S20c, main="Classification 2020",col=cl, legend=FALSE)
+plot(veg20, col="darkgreen", legend=FALSE)
+par(mfrow=c(1,2))
+plot(S21c, main="Classification 2021",col=cl, legend=FALSE)
+plot(veg21, col="darkgreen", legend=FALSE)
+par(mfrow=c(1,2))
+plot(S22c, main="Classification 2022",col=cl, legend=FALSE)
+plot(veg22, col="darkgreen", legend=FALSE)
+par(mfrow=c(1,2))
+plot(S23c, main="Classification 2023",col=cl, legend=FALSE)
+plot(veg23, col="darkgreen", legend=FALSE)
 
 
 
