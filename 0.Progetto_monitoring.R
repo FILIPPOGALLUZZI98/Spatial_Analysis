@@ -6,11 +6,11 @@ setwd("D:R_Studio/Immagini_Progetto_Monitoring")
 ## Commenta immagini,mesi, come ho fatto il ciclo for
 nomi_var <- c()
 for (i in 18:23) {
-  for (j in c(2, 3, 4, 8, 11)) {
+  for (j in c(2, 3, 4, 8)) {
     nomi_var <- c(nomi_var, paste("S", i, "_", j, sep=""))}}
 nomi_file <- c()
 for (i in 18:23) {
-  for (j in c(2, 3, 4, 8, 11)) {
+  for (j in c(2, 3, 4, 8)) {
     nomi_file <- c(nomi_file, paste("S", i, "_", j,".tiff", sep=""))}}
 for (i in 1:length(nomi_var)) {
   assign(nomi_var[i], rast(nomi_file[i]))}
@@ -43,53 +43,56 @@ ndvi21<-(S21_8-S21_4)/(S21_8+S21_4)
 ndvi22<-(S22_8-S22_4)/(S22_8+S22_4)
 ndvi23<-(S23_8-S23_4)/(S23_8+S23_4)
 par(mfrow=c(2,3))
-plot(ndvi18, col=rev(terrain.colors(10)), main = "NDVI 2019", range=c(0,1))
-plot(ndvi19, col=rev(terrain.colors(10)), main = "NDVI 2019", range=c(0,1))
-plot(ndvi20, col=rev(terrain.colors(10)), main = "NDVI 2020", range=c(0,1))
-plot(ndvi21, col=rev(terrain.colors(10)), main = "NDVI 2021", range=c(0,1))
-plot(ndvi22, col=rev(terrain.colors(10)), main = "NDVI 2022", range=c(0,1))
-plot(ndvi23, col=rev(terrain.colors(10)), main = "NDVI 2023", range=c(0,1))
+cl<-colorRampPalette(magma(10, direction=-1))(255)
+plot(ndvi18, col=cl, main = "NDVI 2018", range=c(0,1), axes=FALSE)
+plot(ndvi19, col=cl, main = "NDVI 2019", range=c(0,1), axes=FALSE)
+plot(ndvi20, col=cl, main = "NDVI 2020", range=c(0,1), axes=FALSE)
+plot(ndvi21, col=cl, main = "NDVI 2021", range=c(0,1), axes=FALSE)
+plot(ndvi22, col=cl, main = "NDVI 2022", range=c(0,1), axes=FALSE)
+plot(ndvi23, col=cl, main = "NDVI 2023", range=c(0,1), axes=FALSE)
 
-par(mfrow=c(2,3))
-h18<-hist(ndvi18, main = "2018 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+par(mfrow=c(1,2))
+h18<-hist(ndvi18, main = "2018 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h19<-hist(ndvi19, main = "2019 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+h19<-hist(ndvi19, main = "2019 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h20<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+par(mfrow=c(1,2))
+h20<-hist(ndvi20, main = "2020 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h21<-hist(ndvi21, main = "2021 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+h21<-hist(ndvi21, main = "2021 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h22<-hist(ndvi22, main = "2022 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+par(mfrow=c(1,2))
+h22<-hist(ndvi22, main = "2022 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h23<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 50, xaxt = "n") 
+h23<-hist(ndvi23, main = "2023 NDVI", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 
 # TREND OF NDVI
 par(mfrow=c(2,3))
-h_1<-hist(ndvi18, main = "2018 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
-h_2<-hist(ndvi19, main = "2019 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
-h_3<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
-h_4<-hist(ndvi21, main = "2021 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
-h_5<-hist(ndvi22, main = "2022 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
-h_6<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0, 1),  breaks = 2, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 1), labels = seq(0, 1, 1))
+h_1<-hist(ndvi18, main = "2018 NDVI", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
+h_2<-hist(ndvi19, main = "2019 NDVI values", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
+h_3<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
+h_4<-hist(ndvi21, main = "2021 NDVI values", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
+h_5<-hist(ndvi22, main = "2022 NDVI values", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
+h_6<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
+axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
 
 # VEGETATION
 veg18 <- clamp(ndvi18, 0.4, values=FALSE); veg19 <- clamp(ndvi19, 0.4, values=FALSE) 
@@ -98,40 +101,35 @@ veg22 <- clamp(ndvi22, 0.4, values=FALSE); veg23 <- clamp(ndvi23, 0.4, values=FA
 
 # VEGETATION OVERLAPS
 # Tutto quello che non è vegetazione è bianco, cioè è fuori scala:
+cl <- colorRampPalette(viridis(10, direction=-1))(255)
 par(mfrow=c(2,3))
-plotRGB(S18, axes=TRUE, stretch="lin")
-plot(veg18, add=TRUE, legend=TRUE)
-plotRGB(S19, axes=TRUE, stretch="lin")
-plot(veg19, add=TRUE, legend=TRUE)
-plotRGB(S20, axes=TRUE, stretch="lin")
-plot(veg20, add=TRUE, legend=TRUE)
-plotRGB(S21, axes=TRUE, stretch="lin")
-plot(veg21, add=TRUE, legend=TRUE)
-plotRGB(S22, axes=TRUE, stretch="lin")
-plot(veg22, add=TRUE, legend=TRUE)
-plotRGB(S23, axes=TRUE, stretch="lin")  
-plot(veg23, add=TRUE, legend=TRUE)
+plotRGB(S18, axes=FALSE, stretch="lin", main="April 2018")
+plot(veg18, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
+plotRGB(S19, axes=FALSE, stretch="lin", main="April 2019")
+plot(veg19, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
+plotRGB(S20, axes=FALSE, stretch="lin", main="April 2020")
+plot(veg20,col=cl, add=TRUE, legend=FALSE, axes=FALSE)
+plotRGB(S21, axes=FALSE, stretch="lin", main="April 2021")
+plot(veg21, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
+plotRGB(S22, axes=FALSE, stretch="lin", main="April 2022")
+plot(veg22, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
+plotRGB(S23, axes=FALSE, stretch="lin", main="April 2023")  
+plot(veg23, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
 
 # FALSE COMPOSITE
+m<-c(0, 0, 0, 0)
 par(mfrow=c(1,2))
 im.plotRGB(S18,4,1,2)
-plot(veg18, legend=FALSE, axes=FALSE)
-title(main="Titolo comune per entrambi i grafici")
-im.plotRGB(S19,4,1,2)
-plot(veg19, legend=FALSE, axes=FALSE)
+plot(veg18, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2018")
 im.plotRGB(S20,4,1,2)
-plot(veg20, legend=FALSE, axes=FALSE)
-im.plotRGB(S21,4,1,2)
-plot(veg21, legend=FALSE, axes=FALSE)
+plot(veg20, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2020")
 im.plotRGB(S22,4,1,2)
-plot(veg22, legend=FALSE, axes=FALSE)
-im.plotRGB(S23,4,1,2)
-plot(veg23, legend=FALSE, axes=FALSE)
+plot(veg22, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2022")
 
 # CLASSIFICATION FOR VEGETATION
 m <- c(0, 0.4, 0.6, 0.8, 1)
-cl<-colorRampPalette(c("white","darkgoldenrod1","darkolivegreen1","darkgreen"))(4)
-cl2<-colorRampPalette(c("white","darkgoldenrod1","darkkhaki","darkolivegreen1","darkolivegreen3"))(5)
+cll<-colorRampPalette(c("white","darkgoldenrod1","darkolivegreen1","darkgreen"))(4)
+cll2<-colorRampPalette(c("white","darkgoldenrod1","darkkhaki","darkolivegreen1","darkolivegreen3"))(5)
 par(mfrow=c(2,3))
 vegc18 <- classify(veg18, m) 
 plot(vegc18, col = cl, main = 'Vegetation 2018')
@@ -148,42 +146,41 @@ plot(vegc23, col = cl, main = 'Vegetation 2023')
 
 # TREND OF VEGETATION
 par(mfrow=c(2,3))
-h_1<-hist(veg18, main = "2018 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_1<-hist(veg18, main = "2018 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_2<-hist(veg19, main = "2019 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_2<-hist(veg19, main = "2019 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_3<-hist(veg20, main = "2020 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_3<-hist(veg20, main = "2020 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_4<-hist(veg21, main = "2021 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_4<-hist(veg21, main = "2021 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_5<-hist(veg22, main = "2022 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_5<-hist(veg22, main = "2022 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks =3, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_6<-hist(veg23, main = "2023 VEG values", xlab = "NDVI", ylab= "Frequency", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 350000),  breaks = 5, xaxt = "n") 
+h_6<-hist(veg23, main = "2023 Veg", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 
 # Per la vegetazione
 stack2<-c(veg18, veg19, veg20, veg21, veg22, veg23)
-cl<-rev(terrain.colors(10))
 # plot(stack2,col=cl, range=c(0,1))
 diff21=stack2[[2]]-stack2[[1]]
 diff22=stack2[[3]]-stack2[[1]]
 diff23=stack2[[4]]-stack2[[1]]
 diff24=stack2[[5]]-stack2[[1]]
 diff25=stack2[[6]]-stack2[[1]]
-cl2<-colorRampPalette(c("blue","white","red"))(100)
+
 ## Le zone rosse sono quelle con veg aumentata, viceversa con il blu
 par(mfrow=c(2,3))
-plot(diff21,col=cl2, range=c(-0.45,0.45), main="Comparison 2019-2018")
-plot(diff22,col=cl2, range=c(-0.45,0.45), main="Comparison 2020-2018")
-plot(diff23,col=cl2, range=c(-0.45,0.45), main="Comparison 2021-2018")
-plot(diff24,col=cl2, range=c(-0.45,0.45), main="Comparison 2022-2018")
-plot(diff25,col=cl2, range=c(-0.45,0.45), main="Comparison 2023-2018")
+plot(diff21,col=cl, range=c(-0.45,0.45), main="2019-2018", axes=FALSE)
+plot(diff22,col=cl, range=c(-0.45,0.45), main="2020-2018", axes=FALSE)
+plot(diff23,col=cl, range=c(-0.45,0.45), main="2021-2018", axes=FALSE)
+plot(diff24,col=cl, range=c(-0.45,0.45), main="2022-2018", axes=FALSE)
+plot(diff25,col=cl, range=c(-0.45,0.45), main="2023-2018", axes=FALSE)
 
 
 
@@ -212,12 +209,12 @@ S21_sdm<-focal(S21_8, m, fun=sd)
 S22_sdm<-focal(S22_8, m, fun=sd)
 S23_sdm<-focal(S23_8, m, fun=sd)
 par(mfrow=c(2,3))
-plot(S18_sdm, col=cl, axis=NULL, range=c(0,0.003))
-plot(S19_sdm, col=cl, axis=NULL, range=c(0,0.003))
-plot(S20_sdm, col=cl, axis=NULL, range=c(0,0.003))
-plot(S21_sdm, col=cl, axis=NULL, range=c(0,0.003))
-plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003))
-plot(S23_sdm, col=cl, axis=NULL, range=c(0,0.003))
+plot(S18_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2018")
+plot(S19_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2019")
+plot(S20_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2020")
+plot(S21_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2021")
+plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2022")
+plot(S23_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2023")
 
 ## PCA
 S18pc<-im.pca2(S18) 
@@ -232,13 +229,10 @@ S22pc<-im.pca2(S22)
 S22_pc1<-S22pc$PC1
 S23pc<-im.pca2(S23) 
 S23_pc1<-S23pc$PC1
-par(mfrow=c(2,3))
-plot(S18_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
-plot(S19_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
-plot(S20_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
-plot(S21_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
-plot(S22_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
-plot(S23_pc1,col=cl, range=c(-0.3,0.6), axis=NULL)
+par(mfrow=c(1,3))
+plot(S18_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2018")
+plot(S20_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2020")
+plot(S22_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2022")
 
 # PCA variability
 S18_pc1sdm<-focal(S18_pc1, m, fun=sd)
@@ -248,12 +242,12 @@ S21_pc1sdm<-focal(S20_pc1, m, fun=sd)
 S22_pc1sdm<-focal(S20_pc1, m, fun=sd)
 S23_pc1sdm<-focal(S23_pc1, m, fun=sd)
 par(mfrow=c(2,3))
-plot(S18_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
-plot(S19_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
-plot(S20_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
-plot(S21_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
-plot(S22_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
-plot(S23_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
+plot(S18_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2018")
+plot(S19_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2019")
+plot(S20_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2020")
+plot(S21_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2021")
+plot(S22_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2022")
+plot(S23_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2023")
 
 
 
@@ -261,37 +255,23 @@ plot(S23_pc1sdm, col=cl, range=c(0,0.005), axis=NULL)
 
 
 ## CLASSIFICATION
-cl<-colorRampPalette(c("coral","white","darkgreen"))(100)
-S18c <- im.classify(S18, seed=1, num_clusters=3, do_plot = FALSE)
-par(mfrow=c(1,3))
-plotRGB(S18, stretch="lin", main="April 2018")
-plot(S18c, main="Classification 2018",col=cl, legend=FALSE, axes=FALSE)
-plot(veg18, col="darkgreen", legend=FALSE, axes=FALSE)
 S19c <- im.classify(S19, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
 plotRGB(S19, stretch="lin", main="April 2019")
-plot(S19c, main="Classification 2019",col=cl, legend=FALSE, axes=FALSE)
-plot(veg19, col="darkgreen", legend=FALSE, axes=FALSE)
-S20c <- im.classify(S20, seed=1, num_clusters=3, do_plot = FALSE)
-par(mfrow=c(1,3))
-plotRGB(S20, stretch="lin", main="April 2020")
-plot(S20c, main="Classification 2020",col=cl, legend=FALSE, axes=FALSE)
-plot(veg20, col="darkgreen", legend=FALSE, axes=FALSE)
+plot(S19c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
+plot(veg19, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
+
 S21c <- im.classify(S21, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
 plotRGB(S21, stretch="lin", main="April 2021")
-plot(S21c, main="Classification 2021",col=cl, legend=FALSE, axes=FALSE)
-plot(veg21, col="darkgreen", legend=FALSE, axes=FALSE)
-S22c <- im.classify(S22, seed=1, num_clusters=3, do_plot = FALSE)
-par(mfrow=c(1,3))
-plotRGB(S22, stretch="lin", main="April 2022")
-plot(S22c, main="Classification 2022",col=cl, legend=FALSE, axes=FALSE)
-plot(veg22, col="darkgreen", legend=FALSE, axes=FALSE)
+plot(S21c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
+plot(veg21, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
+
 S23c <- im.classify(S23, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
 plotRGB(S23, stretch="lin", main="April 2023")
-plot(S23c, main="Classification 2023",col=cl, legend=FALSE, axes=FALSE)
-plot(veg23, col="darkgreen", legend=FALSE, axes=FALSE)
+plot(S23c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
+plot(veg23, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
 
 
 
