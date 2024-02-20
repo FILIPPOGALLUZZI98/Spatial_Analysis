@@ -156,25 +156,23 @@ plot(veg22, legend=FALSE, axes=FALSE, col=cl, mar=m)
 # TREND OF VEGETATION
 # I do the same thing as for NDVI to see the trend of vegetation through different years
 par(mfrow=c(2,3))
-m=c(1,1,1,1)
 h_1<-hist(veg18, main = "    2018     ", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, plot=FALSE) 
-plot(h_1, mar=m)
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 h_2<-hist(veg19, main = "    2019     ", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_3<-hist(veg20, main = "    2020      Veg", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
+h_3<-hist(veg20, main = "    2020      ", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 h_4<-hist(veg21, main = "    2021     ", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 h_5<-hist(veg22, main = "    2022     ", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks =3, xaxt = "n", axes=FALSE, mar=m) 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks =3, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 h_6<-hist(veg23, main = "    2023     ", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 
 # This is the temporal variability analysis on the vegetation, to see if there are
@@ -240,12 +238,12 @@ S20_pc1sdm<-focal(S20_pc1, m, fun=sd); S21_pc1sdm<-focal(S20_pc1, m, fun=sd)
 S22_pc1sdm<-focal(S20_pc1, m, fun=sd); S23_pc1sdm<-focal(S23_pc1, m, fun=sd)
 # Plot of the results
 par(mfrow=c(2,3))
-plot(S18_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2018")
-plot(S19_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2019")
-plot(S20_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2020")
-plot(S21_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2021")
-plot(S22_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2022")
-plot(S23_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2023")
+plot(S18_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2018")
+plot(S19_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2019")
+plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2020")
+plot(S21_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2021")
+plot(S22_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2022")
+plot(S23_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2023")
 
 
 
@@ -257,17 +255,17 @@ plot(S23_pc1sdm, col=cl, range=c(0,0.005), axes=FALSE, main="2023")
 # Then, compare the results with the real images and the vegetation regions
 S19c <- im.classify(S19, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
-plotRGB(S19, stretch="lin", main="April 2019")
+plotRGB(S19, stretch="lin", main="Real Colors")
 plot(S19c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
 plot(veg19, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
 S21c <- im.classify(S21, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
-plotRGB(S21, stretch="lin", main="April 2021")
+plotRGB(S21, stretch="lin", main="Real Colors")
 plot(S21c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
 plot(veg21, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
 S23c <- im.classify(S23, seed=1, num_clusters=3, do_plot = FALSE)
 par(mfrow=c(1,3))
-plotRGB(S23, stretch="lin", main="April 2023")
+plotRGB(S23, stretch="lin", main="Real Colors")
 plot(S23c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
 plot(veg23, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
 
