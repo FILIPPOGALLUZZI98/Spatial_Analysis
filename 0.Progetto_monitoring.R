@@ -358,7 +358,7 @@ axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
 h_5<-hist(d5, main = "September", xlab = "", ylab= "Frequency", 
      col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
 axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
-h_6<-hist(d6, main = "October", xlab = "", ylab= "Frequency", 
+h_6<-hist(d6, main = "November", xlab = "", ylab= "Frequency", 
      col = "wheat", xlim = c(-0.5, 0.5),  breaks = 2, xaxt = "n") 
 axis(side=1, at = seq(-1, 1, 1), labels = seq(-1, 1, 1))
 
