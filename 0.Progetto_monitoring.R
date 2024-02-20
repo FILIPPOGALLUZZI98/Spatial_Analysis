@@ -253,21 +253,24 @@ plot(S23_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2023")
 ## CLASSIFICATION
 # I use the im.classify function to classify the regions into three clusters
 # Then, compare the results with the real images and the vegetation regions
-S19c <- im.classify(S19, seed=1, num_clusters=3, do_plot = FALSE)
+S18c <- im.classify(S18, seed=1, num_clusters=3, do_plot = FALSE)
+S20c <- im.classify(S20, seed=1, num_clusters=3, do_plot = FALSE)
+S22c <- im.classify(S22, seed=1, num_clusters=3, do_plot = FALSE)
+mm=c(0,0.2,0,0)
 par(mfrow=c(1,3))
-plotRGB(S19, stretch="lin", main="Real Colors")
-plot(S19c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
-plot(veg19, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
-S21c <- im.classify(S21, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S18, stretch="lin", main="Real Colors")
+plot(S18c, main="Classification",col=cl, legend=FALSE, axes=FALSE, mar=mm)
+plot(veg18, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation", mar=mm)
 par(mfrow=c(1,3))
-plotRGB(S21, stretch="lin", main="Real Colors")
-plot(S21c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
-plot(veg21, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
-S23c <- im.classify(S23, seed=1, num_clusters=3, do_plot = FALSE)
+plotRGB(S20, stretch="lin", main="Real Colors")
+plot(S20c, main="Classification",col=cl, legend=FALSE, axes=FALSE, mar=mm)
+plot(veg20, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation", mar=mm)
 par(mfrow=c(1,3))
-plotRGB(S23, stretch="lin", main="Real Colors")
-plot(S23c, main="Classification",col=cl, legend=FALSE, axes=FALSE)
-plot(veg23, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation")
+plotRGB(S22, stretch="lin", main="Real Colors")
+plot(S22c, main="Classification",col=cl, legend=FALSE, axes=FALSE, mar=mm)
+plot(veg22, col="darkgreen", legend=FALSE, axes=FALSE, main="Vegetation", mar=mm)
+
+
 
 
 
