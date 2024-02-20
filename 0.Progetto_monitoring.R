@@ -15,19 +15,21 @@ for (i in 18:23) {
     nomi_file <- c(nomi_file, paste("S", i, "_", j,".tiff", sep=""))}}  ## I need to add the extension
 for (i in 1:length(nomi_var)) {
   assign(nomi_var[i], rast(nomi_file[i]))}
-
 # I create a vector with the 4 bands for each eyar (R, G, B, NIR)
 S18<-c(S18_4,S18_3,S18_2,S18_8); S19<-c(S19_4,S19_3,S19_2,S19_8)
 S20<-c(S20_4,S20_3,S20_2,S20_8); S21<-c(S21_4,S21_3,S21_2,S21_8)
 S22<-c(S22_4,S22_3,S22_2,S22_8); S23<-c(S23_4,S23_3,S23_2,S23_8)
+
+# Plot of coordinates for April 2023
+plotRGB(S23,1,2,3, axes=TRUE, mar=c(2,2,2,2))
 # Plot of the images with real colors
 par(mfrow=c(2,3))
-plotRGB(S18, stretch="lin", main="April 2018")
-plotRGB(S19, stretch="lin", main="April 2019")
-plotRGB(S20, stretch="lin", main="April 2020")
-plotRGB(S21, stretch="lin", main="April 2021")
-plotRGB(S22, stretch="lin", main="April 2022")
-plotRGB(S23, stretch="lin", main="April 2023")
+plotRGB(S18, stretch="lin", main="2018")
+plotRGB(S19, stretch="lin", main="2019")
+plotRGB(S20, stretch="lin", main="2020")
+plotRGB(S21, stretch="lin", main="2021")
+plotRGB(S22, stretch="lin", main="2022")
+plotRGB(S23, stretch="lin", main="2023")
 
 
 
@@ -43,33 +45,33 @@ ndvi22<-(S22_8-S22_4)/(S22_8+S22_4); ndvi23<-(S23_8-S23_4)/(S23_8+S23_4)
 par(mfrow=c(2,3))
 cl<-colorRampPalette(magma(10, direction=-1))(255)  ## Reversed palette
 # In this case, blue represents higher values and red represents smaller values
-plot(ndvi18, col=cl, main = "NDVI 2018", range=c(0,1), axes=FALSE)
-plot(ndvi19, col=cl, main = "NDVI 2019", range=c(0,1), axes=FALSE)
-plot(ndvi20, col=cl, main = "NDVI 2020", range=c(0,1), axes=FALSE)
-plot(ndvi21, col=cl, main = "NDVI 2021", range=c(0,1), axes=FALSE)
-plot(ndvi22, col=cl, main = "NDVI 2022", range=c(0,1), axes=FALSE)
-plot(ndvi23, col=cl, main = "NDVI 2023", range=c(0,1), axes=FALSE)
+plot(ndvi18, col=cl, main = "2018", range=c(0,1), axes=FALSE)
+plot(ndvi19, col=cl, main = "2019", range=c(0,1), axes=FALSE)
+plot(ndvi20, col=cl, main = "2020", range=c(0,1), axes=FALSE)
+plot(ndvi21, col=cl, main = "2021", range=c(0,1), axes=FALSE)
+plot(ndvi22, col=cl, main = "2022", range=c(0,1), axes=FALSE)
+plot(ndvi23, col=cl, main = "2023", range=c(0,1), axes=FALSE)
 
 # Histograms for NDVI for each year, in order to see the distribution in frequency
 par(mfrow=c(1,2))
-h18<-hist(ndvi18, main = "2018 NDVI", xlab = "NDVI", ylab= " ", 
+h18<-hist(ndvi18, main = "2018", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h19<-hist(ndvi19, main = "2019 NDVI", xlab = "NDVI", ylab= " ", 
-     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-par(mfrow=c(1,2))
-h20<-hist(ndvi20, main = "2020 NDVI", xlab = "NDVI", ylab= " ", 
-     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
-axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h21<-hist(ndvi21, main = "2021 NDVI", xlab = "NDVI", ylab= " ", 
+h19<-hist(ndvi19, main = "2019", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 par(mfrow=c(1,2))
-h22<-hist(ndvi22, main = "2022 NDVI", xlab = "NDVI", ylab= " ", 
+h20<-hist(ndvi20, main = "2020", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
-h23<-hist(ndvi23, main = "2023 NDVI", xlab = "NDVI", ylab= " ", 
+h21<-hist(ndvi21, main = "2021", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
+par(mfrow=c(1,2))
+h22<-hist(ndvi22, main = "2022", xlab = "NDVI", ylab= " ", 
+     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
+axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
+h23<-hist(ndvi23, main = "2023", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 
@@ -77,22 +79,22 @@ axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
 # The method is the same, but this time the intervals are smaller (only 4)
 # in order to see better the trend of NDVI with time
 par(mfrow=c(2,3))
-h_1<-hist(ndvi18, main = "2018 NDVI", xlab = "", ylab= "", 
+h_1<-hist(ndvi18, main = "    2018     ", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
-h_2<-hist(ndvi19, main = "2019 NDVI values", xlab = "NDVI", ylab= " ", 
+h_2<-hist(ndvi19, main = "    2019     ", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
-h_3<-hist(ndvi20, main = "2020 NDVI values", xlab = "NDVI", ylab= " ", 
+h_3<-hist(ndvi20, main = "    2020     ", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
-h_4<-hist(ndvi21, main = "2021 NDVI values", xlab = "NDVI", ylab= " ", 
+h_4<-hist(ndvi21, main = "    2021     ", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
-h_5<-hist(ndvi22, main = "2022 NDVI values", xlab = "NDVI", ylab= " ", 
+h_5<-hist(ndvi22, main = "    2022     ", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
-h_6<-hist(ndvi23, main = "2023 NDVI values", xlab = "NDVI", ylab= " ", 
+h_6<-hist(ndvi23, main = "    2023     ", xlab = "NDVI", ylab= " ", 
      col = "wheat", xlim = c(0, 1), ylim = c(0, 600000),  breaks = 6, xaxt = "n", axes=FALSE) 
 axis(side=1, at = seq(0, 1, 0.5), labels = seq(0, 1, 0.5))
 
@@ -108,17 +110,17 @@ veg22 <- clamp(ndvi22, 0.4, values=FALSE); veg23 <- clamp(ndvi23, 0.4, values=FA
 # surely there is vegetation; Transparent regions are those with values of NDVI smaller than 0.4
 cl <- colorRampPalette(viridis(10, direction=-1))(255)  ## I use the same reversed palette 
 par(mfrow=c(2,3))
-plotRGB(S18, axes=FALSE, stretch="lin", main="April 2018")
+plotRGB(S18, axes=FALSE, stretch="lin", main="2018")
 plot(veg18, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
-plotRGB(S19, axes=FALSE, stretch="lin", main="April 2019")
+plotRGB(S19, axes=FALSE, stretch="lin", main="2019")
 plot(veg19, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
-plotRGB(S20, axes=FALSE, stretch="lin", main="April 2020")
+plotRGB(S20, axes=FALSE, stretch="lin", main="2020")
 plot(veg20,col=cl, add=TRUE, legend=FALSE, axes=FALSE)
-plotRGB(S21, axes=FALSE, stretch="lin", main="April 2021")
+plotRGB(S21, axes=FALSE, stretch="lin", main="2021")
 plot(veg21, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
-plotRGB(S22, axes=FALSE, stretch="lin", main="April 2022")
+plotRGB(S22, axes=FALSE, stretch="lin", main="2022")
 plot(veg22, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
-plotRGB(S23, axes=FALSE, stretch="lin", main="April 2023")  
+plotRGB(S23, axes=FALSE, stretch="lin", main="2023")  
 plot(veg23, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
 
 # FALSE COMPOSITE
@@ -127,11 +129,11 @@ plot(veg23, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
 m<-c(0, 0, 0, 0)  ## To set the margin of the plot
 par(mfrow=c(1,2))
 im.plotRGB(S18,4,1,2)  ## R, B, G
-plot(veg18, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2018")
+plot(veg18, legend=FALSE, axes=FALSE, col=cl, mar=m)
 im.plotRGB(S20,4,1,2)
-plot(veg20, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2020")
+plot(veg20, legend=FALSE, axes=FALSE, col=cl, mar=m)
 im.plotRGB(S22,4,1,2)
-plot(veg22, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2022")
+plot(veg22, legend=FALSE, axes=FALSE, col=cl, mar=m)
 
 ###  CLASSIFICATION FOR VEGETATION
 # m <- c(0, 0.4, 0.6, 0.8, 1)  ## To set the intervals
@@ -154,22 +156,24 @@ plot(veg22, legend=FALSE, axes=FALSE, col=cl, mar=m, main="2022")
 # TREND OF VEGETATION
 # I do the same thing as for NDVI to see the trend of vegetation through different years
 par(mfrow=c(2,3))
-h_1<-hist(veg18, main = "2018 Veg", xlab = "", ylab= "", 
+m=c(1,1,1,1)
+h_1<-hist(veg18, main = "    2018     ", xlab = "", ylab= "", 
+     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, plot=FALSE) 
+plot(h_1, mar=m)
+axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
+h_2<-hist(veg19, main = "    2019     ", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_2<-hist(veg19, main = "2019 Veg", xlab = "", ylab= "", 
+h_3<-hist(veg20, main = "    2020      Veg", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_3<-hist(veg20, main = "2020 Veg", xlab = "", ylab= "", 
+h_4<-hist(veg21, main = "    2021     ", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_4<-hist(veg21, main = "2021 Veg", xlab = "", ylab= "", 
-     col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
-axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_5<-hist(veg22, main = "2022 Veg", xlab = "", ylab= "", 
+h_5<-hist(veg22, main = "    2022     ", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks =3, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
-h_6<-hist(veg23, main = "2023 Veg", xlab = "", ylab= "", 
+h_6<-hist(veg23, main = "    2023     ", xlab = "", ylab= "", 
      col = "wheat", xlim = c(0.4, 1), ylim = c(0, 400000),  breaks = 6, xaxt = "n", axes=FALSE, mar=m) 
 axis(side=1, at = seq(0.4, 1, 0.1), labels = seq(0.4, 1, 0.1))
 
