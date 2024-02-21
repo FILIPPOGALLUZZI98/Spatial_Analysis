@@ -203,28 +203,22 @@ cl<-colorRampPalette(viridis(7))(255)  ## This time it's not reversed
 
 # Standard deviation on all years with the previous moving windows with respect to the NIR band
 S18_sdm<-focal(S18_8, m, fun=sd)
-S19_sdm<-focal(S19_8, m, fun=sd)
+# S19_sdm<-focal(S19_8, m, fun=sd)
 S20_sdm<-focal(S20_8, m, fun=sd)
-S21_sdm<-focal(S21_8, m, fun=sd)
+# S21_sdm<-focal(S21_8, m, fun=sd)
 S22_sdm<-focal(S22_8, m, fun=sd)
-S23_sdm<-focal(S23_8, m, fun=sd)
-# Plot of the standard deviation for each year
-par(mfrow=c(2,3))
+# S23_sdm<-focal(S23_8, m, fun=sd)
+# Plot of the standard deviation for 3 chosen years
+par(mfrow=c(1,3))
 plot(S18_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2018")
-plot(S19_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2019")
 plot(S20_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2020")
-plot(S21_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2021")
 plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2022")
-plot(S23_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2023")
 
 ## PCA
 # Build of PCA for each year in order to better assess variability over a natural variable
 S18pc<-im.pca2(S18); S18_pc1<-S18pc$PC1
-S19pc<-im.pca2(S19); S19_pc1<-S19pc$PC1
 S20pc<-im.pca2(S20); S20_pc1<-S20pc$PC1
-S21pc<-im.pca2(S21); S21_pc1<-S21pc$PC1
 S22pc<-im.pca2(S22); S22_pc1<-S22pc$PC1
-S23pc<-im.pca2(S23); S23_pc1<-S23pc$PC1
 # Plot of the first components for 3 selected years (2018-2020-2022)
 par(mfrow=c(1,3))
 plot(S18_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2018")
@@ -233,19 +227,14 @@ plot(S22_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2022")
 
 # PCA variability
 # I do the same thing for the variability with PCA1 instead of the NIR band
-S18_pc1sdm<-focal(S18_pc1, m, fun=sd); S19_pc1sdm<-focal(S18_pc1, m, fun=sd)
-S20_pc1sdm<-focal(S20_pc1, m, fun=sd); S21_pc1sdm<-focal(S20_pc1, m, fun=sd)
-S22_pc1sdm<-focal(S20_pc1, m, fun=sd); S23_pc1sdm<-focal(S23_pc1, m, fun=sd)
+S18_pc1sdm<-focal(S18_pc1, m, fun=sd)
+S20_pc1sdm<-focal(S20_pc1, m, fun=sd)
+S22_pc1sdm<-focal(S22_pc1, m, fun=sd)
 # Plot of the results
 par(mfrow=c(2,3))
 plot(S18_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2018")
-plot(S19_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2019")
 plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2020")
-plot(S21_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2021")
 plot(S22_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2022")
-plot(S23_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2023")
-
-
 
 
 
