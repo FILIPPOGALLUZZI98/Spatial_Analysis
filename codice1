@@ -1,3 +1,4 @@
-h18<-hist(ndvi18, main = "2018", xlab = "NDVI", ylab= " ", 
-     col = "wheat", xlim = c(0, 1), ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
+h18<-hist(ndvi18, main = "2018", xlab = "NDVI", 
+ col = "wheat", xlim = c(0, 1), 
+ ylim = c(0, 70000),  breaks = 50, xaxt = "n") 
 axis(side=1, at = seq(0, 1, 0.1), labels = seq(0, 1, 0.1))
