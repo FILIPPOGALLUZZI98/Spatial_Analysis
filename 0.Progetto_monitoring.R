@@ -128,7 +128,7 @@ plot(veg23, col=cl, add=TRUE, legend=FALSE, axes=FALSE)
 # false composite is also used to evaluate agricultural regions
 m<-c(0, 0, 0, 0)  ## To set the margin of the plot
 par(mfrow=c(1,2))
-im.plotRGB(S18,4,1,2)  ## R, B, G
+im.plotRGB(S18,4,1,2)  ## NIR(4), R(1), G(2)
 plot(veg18, legend=FALSE, axes=FALSE, col=cl, mar=m)
 im.plotRGB(S20,4,1,2)
 plot(veg20, legend=FALSE, axes=FALSE, col=cl, mar=m)
