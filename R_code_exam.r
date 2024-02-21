@@ -235,11 +235,11 @@ par(mfrow=c(1,2))
 plot(S18_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="PC1")
 plot(S18_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="NIR")
 par(mfrow=c(1,2))
-plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="Pc1")
+plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="PC1")
 plot(S20_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="NIR")
 par(mfrow=c(1,2))
 plot(S22_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="PC1")
-plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2022")
+plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="NIR")
 
 
 
