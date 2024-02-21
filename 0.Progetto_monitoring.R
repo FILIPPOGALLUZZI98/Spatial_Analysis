@@ -184,7 +184,7 @@ diff23=stack2[[4]]-stack2[[1]]
 diff24=stack2[[5]]-stack2[[1]]
 diff25=stack2[[6]]-stack2[[1]]
 ## Blue regions are those in which the variation in vegetation is positive
-par(mfrow=c(2,3))
+# par(mfrow=c(2,3))
 plot(diff21,col=cl, range=c(-0.45,0.45), main="2019-2018", axes=FALSE)
 plot(diff22,col=cl, range=c(-0.45,0.45), main="2020-2018", axes=FALSE)
 plot(diff23,col=cl, range=c(-0.45,0.45), main="2021-2018", axes=FALSE)
