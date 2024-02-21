@@ -332,12 +332,12 @@ d4 <- vegd-vegl; d5 <- vege-vegm; d6 <-vegf-vegn
 par(mfrow=c(2,3))
 cl <- colorRampPalette(viridis(10, direction=-1))(255)  ## Reversed palette
 # Blue regions --> vegetation growth
-plot(d1, col=cl, main = "NDVI Jan", range=c(-0.4,0.4), axes=FALSE)
-plot(d2, col=cl, main = "NDVI Mar", range=c(-0.4,0.4), axes=FALSE)
-plot(d3, col=cl, main = "NDVI May", range=c(-0.4,0.4), axes=FALSE)
-plot(d4, col=cl, main = "NDVI July", range=c(-0.4,0.4), axes=FALSE)
-plot(d5, col=cl, main = "NDVI Sept", range=c(-0.4,0.4), axes=FALSE)
-plot(d6, col=cl, main = "NDVI Nov", range=c(-0.4,0.4), axes=FALSE)
+plot(d1, col=cl, main = "Jan", range=c(-0.4,0.4), axes=FALSE)
+plot(d2, col=cl, main = "Mar", range=c(-0.4,0.4), axes=FALSE)
+plot(d3, col=cl, main = "May", range=c(-0.4,0.4), axes=FALSE)
+plot(d4, col=cl, main = "July", range=c(-0.4,0.4), axes=FALSE)
+plot(d5, col=cl, main = "Sept", range=c(-0.4,0.4), axes=FALSE)
+plot(d6, col=cl, main = "Nov", range=c(-0.4,0.4), axes=FALSE)
 
 # TREND OF NDVI
 # The same Histogram analysis, that considers the changes in quantity of vegetation
