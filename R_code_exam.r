@@ -230,11 +230,16 @@ plot(S22_pc1,col=cl, range=c(-0.3,0.6), axes=FALSE, main="2022")
 S18_pc1sdm<-focal(S18_pc1, m, fun=sd)
 S20_pc1sdm<-focal(S20_pc1, m, fun=sd)
 S22_pc1sdm<-focal(S22_pc1, m, fun=sd)
-# Plot of the results
-par(mfrow=c(2,3))
-plot(S18_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2018")
-plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2020")
-plot(S22_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="2022")
+# Plot of the comparison with the NIR variability
+par(mfrow=c(1,2))
+plot(S18_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="PC1")
+plot(S18_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="NIR")
+par(mfrow=c(1,2))
+plot(S20_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="Pc1")
+plot(S20_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="NIR")
+par(mfrow=c(1,2))
+plot(S22_pc1sdm, col=cl, range=c(0,0.003), axes=FALSE, main="PC1")
+plot(S22_sdm, col=cl, axis=NULL, range=c(0,0.003), axes=FALSE, main="2022")
 
 
 
