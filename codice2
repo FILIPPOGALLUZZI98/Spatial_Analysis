@@ -1,13 +1,2 @@
-veg18 <- clamp(ndvi18, 0.4, values=FALSE)
-veg19 <- clamp(ndvi19, 0.4, values=FALSE) 
-veg20 <- clamp(ndvi20, 0.4, values=FALSE)
-veg21 <- clamp(ndvi21, 0.4, values=FALSE) 
-veg22 <- clamp(ndvi22, 0.4, values=FALSE)
-veg23 <- clamp(ndvi23, 0.4, values=FALSE) 
-
-stack2<-c(veg18, veg19, veg20, veg21, veg22, veg23)
-diff21=stack2[[2]]-stack2[[1]]
-diff22=stack2[[3]]-stack2[[1]]
-diff23=stack2[[4]]-stack2[[1]]
-diff24=stack2[[5]]-stack2[[1]]
-diff25=stack2[[6]]-stack2[[1]]
+S18pc<-im.pca2(S18); S18_pc1<-S18pc$PC1
+S18_pc1sdm<-focal(S18_pc1, m, fun=sd)
