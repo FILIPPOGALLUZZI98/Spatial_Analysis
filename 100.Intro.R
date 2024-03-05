@@ -57,7 +57,8 @@ pe<-crop(v, e)
 plot(v)
 plot(extent, add=TRUE, lwd=3, col="red")
 plot(pe, col='light blue', add=TRUE)
-plot(extent, add=TRUE, lwd=3, border="blue")plot(i)
+plot(extent, add=TRUE, lwd=3, border="blue")
+plot(i)
 
 # It is common to aggregate (“dissolve”) polygons that have the same value for an attribute of interest
 pa<-aggregate(v, by='variabile')
